@@ -1,6 +1,6 @@
 import { Dropdown } from "./Dropdown";
 import { useContext, useEffect, useState } from "react";
-import { CurrencyContext } from "./Homepage";
+import { CurrencyContext } from "../pages/Homepage";
 
 function PickCurrency() {
   const [fetchAPI, setFetchAPI] = useState(false);

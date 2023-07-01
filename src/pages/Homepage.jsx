@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { Header } from "./Header";
+import { Header } from "../components/Header";
 
 const CurrencyContext = createContext("USD");
 
