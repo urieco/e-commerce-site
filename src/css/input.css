@@ -5,6 +5,11 @@
 :root {
   --primary_1: #DC2626;
   --primary_2: #050517;
-  --primary_3: #56F0E3;
+  --primary_3: #334155;
   --secondary_1: #676F54;
+}
+
+.active {
+  color: #FC2B2B;
+  font-weight: 600;
 }
