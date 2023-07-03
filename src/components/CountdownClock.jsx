@@ -1,55 +1,43 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 function CountdownClock() {
-  const [timer, setTimer] = useState(10);
+  const [timer, setTimer] = useState(100);
 
-  let day = 0;
-  let hour = 0;
-  let minute = 0;
-  let second = 0;
+  const timeValues = useMemo(() => {
+    const day = Math.floor(timer / 86400);
+    const hour = Math.floor((timer % 86400) / 3600);
+    const minute = Math.floor((timer % 3600) / 60);
+    const second = timer % 60;
 
-  if (timer >= 86400) {
-    day = Math.floor(timer / 86400);
-  }
-  if ((timer - 86400*day) >= 3600) {
-    hour = Math.floor((timer - 86400*day) / 3600);
-  }
-  if ((timer - 86400*day - 3600*hour) >= 60) {
-    minute = Math.floor((timer - 86400*day - 3600*hour) / 60);
-  }
-  second = timer - 86400*day - 3600*hour - 60*minute;
-
-  const countdown = () => {
-    setTimer((prev) => prev-1);
-  }
+    return { day, hour, minute, second };
+  }, [timer]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    setTimeout(() => {
       if (timer <= 0) return;
-      else countdown();
-    }, 1000)
-    return () => clearInterval(interval);
+      else setTimer((prev) => prev - 1);
+    }, 1000);
+    return () => {};
   }, [timer]);
 
   return (
     <>
       <div className="flex gap-2 justify-center ml-6">
         <div className="text-gray-200 bg-primary_1 text-center text-sm w-20 h-20 font-light flex flex-col pt-3 rounded-full shadow-lg">
-          <span className="text-xl font-semibold mb-1">{day}</span> DAYS
+          <span className="text-xl font-semibold mb-1">{timeValues.day}</span> DAYS
         </div>
         <div className="text-gray-200 bg-primary_1 text-center text-sm w-20 h-20 font-light flex flex-col pt-3 rounded-full shadow-lg">
-          <span className="text-xl font-semibold mb-1">{hour}</span> HOURS
+          <span className="text-xl font-semibold mb-1">{timeValues.hour}</span> HOURS
         </div>
         <div className="text-gray-200 bg-primary_1 text-center text-sm w-20 h-20 font-light flex flex-col pt-3 rounded-full shadow-lg">
-          <span className="text-xl font-semibold mb-1">{minute}</span> MINUTES
+          <span className="text-xl font-semibold mb-1">{timeValues.minute}</span> MINUTES
         </div>
         <div className="text-gray-200 bg-primary_1 text-center text-sm w-20 h-20 font-light flex flex-col pt-3 rounded-full shadow-lg">
-          <span className="text-xl font-semibold mb-1">{second}</span> SECONDS
+          <span className="text-xl font-semibold mb-1">{timeValues.second}</span> SECONDS
         </div>
       </div>
     </>
   );
 }
-
 
 export { CountdownClock };
