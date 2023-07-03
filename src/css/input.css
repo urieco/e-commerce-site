@@ -13,3 +13,20 @@
   color: #FC2B2B;
   font-weight: 600;
 }
+
+.dotActive {
+  background-color: rgb(156 163 175);
+}
+
+.swipeLeft {
+  background-color: #FFF;
+  transform: translateX(-250%);
+  transition: transform 2s ease;
+}
+
+.swipeRight {
+  background-color: #FFF;
+  transform: translateX(250%);
+  transition: transform 2s ease;
+}
+

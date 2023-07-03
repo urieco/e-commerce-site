@@ -5,8 +5,8 @@ function Content () {
   return (
     <>
       <div className="mt-10">
-        <Promotion/>
         <Slider/>
+        <Promotion/>
       </div>
     </>
   );

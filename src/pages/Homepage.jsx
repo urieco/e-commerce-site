@@ -12,7 +12,7 @@ function Homepage () {
     <CurrencyContext.Provider
       value = {{currency, setCurrency}}
     >
-      {/* <Header/> */}
+      <Header/>
       <Content/>
     </CurrencyContext.Provider>
   );

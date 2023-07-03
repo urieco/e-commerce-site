@@ -3,7 +3,7 @@ import { FormField } from "../components/FormField";
 function SignUpForm() {
   return (
     <div className="min-w-screen min-h-screen bg-gradient-to-r from-red-100 to-blue-100 grid">
-      <div className="text-secondary_1 bg-gray-100 w-max items-start justify-self-center shadow-lg mt-36 mb-48">
+      <div className="text-secondary_1 w-max items-start justify-self-center shadow-lg mt-36 mb-48">
         <div className="text-gray-200 bg-primary_1 text-center text-3xl font-bold px-16 py-4 ">
           REGISTRATION
         </div>

@@ -14,7 +14,7 @@ function Header() {
   const [account, setAccount] = useState("Sign In");
 
   // Prevent redirecting to /login
-  const [isSignedIn, setIsSignedIn] = useState(true);
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
   const handleClick = (e) => {
     if (isSignedIn) e.preventDefault();
