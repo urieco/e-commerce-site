@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import { Header } from "../components/Header";
 import { Content } from "../components/Content";
 
-const CurrencyContext = createContext("USD");
+const CurrencyContext = createContext();
 
 function Homepage () {
   const [currency, setCurrency] = useState("USD");
@@ -12,7 +12,7 @@ function Homepage () {
     <CurrencyContext.Provider
       value = {{currency, setCurrency}}
     >
-      <Header/>
+      {/* <Header/> */}
       <Content/>
     </CurrencyContext.Provider>
   );
