@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import { CurrencyContext } from "../pages/Homepage";
+import { CurrencyContext } from "../App.jsx";
 import { StarRating } from "./StarRating";
 
 import { IoLogoUsd } from "react-icons/io";

@@ -31,7 +31,7 @@ function Header() {
 
   return (
     <>
-      <div>
+      <div className="sticky top-0 z-50">
         <div className="bg-primary_2 text-gray-200 font-semibold flex place-content-between px-[10vw]">
           <div className="flex gap-x-2">
             <div className="flex gap-x-1">

@@ -7,8 +7,8 @@ function Content() {
   return (
     <>
       <div className="mt-10">
-        {/* <Slider />
-        <Promotion /> */}
+        <Slider />
+        <Promotion />
         <Recommendation />
       </div>
     </>

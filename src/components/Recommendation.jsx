@@ -5,7 +5,7 @@ import { ProductDisplay } from "./ProductDisplay";
 function Recommendation() {
   let temp = useRef([]);
 
-  while (temp.current.length < 6) {
+  while (temp.current.length < 8) {
     const randomNumber = Math.floor(Math.random() * Products.length);
     if (!temp.current.includes(randomNumber)) {
       temp.current.push(randomNumber);

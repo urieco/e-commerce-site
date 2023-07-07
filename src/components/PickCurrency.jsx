@@ -1,6 +1,6 @@
 import { Dropdown } from "./Dropdown";
-import { useContext, useEffect, useState } from "react";
-import { CurrencyContext } from "../pages/Homepage";
+import { useContext } from "react";
+import { CurrencyContext } from "../App.jsx";
 
 function PickCurrency() {
   const { currency, setCurrency } = useContext(CurrencyContext);

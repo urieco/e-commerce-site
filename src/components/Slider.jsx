@@ -12,25 +12,25 @@ function Slider() {
   const sample = [
     {
       imageUrl: Slide1,
-      url: "/products/smartphone/iPhone14ProMax",
+      url: "/products/Smartphone/4s",
       title: "iPhone 14 Pro Max",
       key: 0,
     },
     {
       imageUrl: Slide2,
-      url: "/products/laptop/MacbookAir2023",
+      url: "/products/Laptop/4l",
       title: "Macbook Air 2023",
       key: 1,
     },
     {
       imageUrl: Slide3,
-      url: "/products/accessories/AppleAirPods",
+      url: "/products/Accessories/1a",
       title: "AirPods",
       key: 2,
     },
     {
       imageUrl: Slide4,
-      url: "/products/PC/MacMini",
+      url: "/products/PC/3p",
       title: "Mac Mini",
       key: 3,
     },
@@ -85,13 +85,13 @@ function Slider() {
       <div className="border-x-transparent py-2 border-y rounded-lg mx-[10vw] mb-10 shadow-sm">
         <div className="w-[40vw] h-[40vh] relative my-0 mx-auto">
           <div
-            className="text-gray-400 hover:text-gray-700 text-7xl font-semibold w-[5vw] h-[5vh] absolute top-[35%] -left-20 scale-y-125 active:translate-x-[-0.25rem] cursor-pointer z-10 select-none"
+            className="text-gray-300 hover:text-gray-600 text-7xl font-semibold w-[5vw] h-[5vh] absolute top-[35%] -left-20 scale-y-125 active:translate-x-[-0.25rem] cursor-pointer z-10 select-none"
             onClick={goToLeft}
           >
             {"<"}
           </div>
           <div
-            className="text-gray-400 hover:text-gray-600 text-7xl font-semibold w-[5vw] h-[5vh] absolute top-[35%] -right-20 scale-y-125 active:translate-x-1 cursor-pointer z-10 select-none"
+            className="text-gray-300 hover:text-gray-600 text-7xl font-semibold w-[5vw] h-[5vh] absolute top-[35%] -right-20 scale-y-125 active:translate-x-1 cursor-pointer z-10 select-none"
             onClick={goToRight}
           >
             {">"}
