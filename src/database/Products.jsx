@@ -176,7 +176,7 @@ const Products = [
     title: "Xiaomi 13 Pro",
     description: "256GB, 6.73 Inches, 50MP Cameras, AMOLED",
     type: "Smartphone",
-    imageURL: "/images/Smartphone - Xiaomi13Pro.jpg",
+    imageURL: "/images/Smartphone - Xiaomi13Pro.png",
     price: 1049,
     discount: 0.15,
     totalRating: [{ customerId: "admin", value: 5 }],

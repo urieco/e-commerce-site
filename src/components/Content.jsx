@@ -1,14 +1,15 @@
-import { ProductDisplay } from "./ProductDisplay";
+
 import { Promotion } from "./Promotion";
+import { Recommendation } from "./Recommendation";
 import { Slider } from "./Slider";
 
-function Content () {
+function Content() {
   return (
     <>
       <div className="mt-10">
-        <Slider/>
-        <Promotion/>
-        <ProductDisplay />
+        {/* <Slider />
+        <Promotion /> */}
+        <Recommendation />
       </div>
     </>
   );
