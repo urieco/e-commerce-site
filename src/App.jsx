@@ -10,7 +10,7 @@ const SortingContext = createContext();
 function App() {
   const [currency, setCurrency] = useState(getUserCurrencyPreference());
   const [allFilter, setAllFilter] = useState({ brand: [] });
-  const [sortMethod, setSortMethod] = useState("A to Z");
+  const [sortMethod, setSortMethod] = useState("Avg. Customer Review");
   
   const [exchangeRate, setExchangeRate] = useState(1);
 

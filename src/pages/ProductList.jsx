@@ -6,6 +6,7 @@ import { FilteringSideBar } from "../components/FilteringSideBar";
 import { SortingSelector } from "../components/SortingSelector";
 
 function ProductList ({ category }) {
+
   return (
     <>
       <Header/>
