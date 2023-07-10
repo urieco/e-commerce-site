@@ -11,8 +11,7 @@ function App() {
   const [currency, setCurrency] = useState(getUserCurrencyPreference());
   const [allFilter, setAllFilter] = useState({ brand: [] });
   const [sortMethod, setSortMethod] = useState("A to Z");
-  // "Z to A", "Price: Low to High", "Price: High to Slow", "Newest to Oldest", "Oldest to Newest"
-
+  
   const [exchangeRate, setExchangeRate] = useState(1);
 
   function getUserCurrencyPreference() {

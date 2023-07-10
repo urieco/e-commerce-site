@@ -2,11 +2,9 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { AiOutlineCaretUp, AiOutlineCaretDown } from "react-icons/ai";
 
-function Dropdown({ dropdownTitle, id, list, getPickedCurrency, overallStyle, buttonStyle, listStyle, listItemStyle}) {
+function Dropdown({ dropdownTitle, id, list, selectListItemMethod, overallStyle, buttonStyle, listStyle, listItemStyle}) {
   const [isOpen, setIsOpen] = useState(false);
   const [listItem, setListItem] = useState(dropdownTitle);
-
-  if (!list) list = ["Item 1", "Item 2", "Item 3", "Item 4"];
 
   const ListDropdown = list.map((item) => {
     return (
@@ -16,7 +14,8 @@ function Dropdown({ dropdownTitle, id, list, getPickedCurrency, overallStyle, bu
         onClick={(event) => {
           const clickedElementValue = event.currentTarget.textContent;
           setListItem(clickedElementValue);
-          getPickedCurrency(clickedElementValue);
+          setIsOpen(false);
+          selectListItemMethod(clickedElementValue);
         }}
       >
         {item}
@@ -30,6 +29,9 @@ function Dropdown({ dropdownTitle, id, list, getPickedCurrency, overallStyle, bu
         <button
           id={id}
           className={`min-w-100 grid grid-cols-2 items-center justify-items-start pl-1 hover:text-primary_1 ${buttonStyle}`}
+          style={{
+            gridTemplateColumns: "1fr 1rem"
+          }}
           onClick={() => setIsOpen((prev) => !prev)}
         >
           {listItem}
@@ -39,7 +41,7 @@ function Dropdown({ dropdownTitle, id, list, getPickedCurrency, overallStyle, bu
         </button>
 
         {isOpen && (
-          <ul className={`text-gray-200 bg-primary_2 w-full absolute top-[1.55rem] flex flex-col items-start pl-1 rounded-b ${listStyle}`}>
+          <ul className={`text-gray-200 bg-primary_2 w-full absolute top-[1.575rem] flex flex-col items-start pl-1 rounded-b ${listStyle}`}>
             {ListDropdown}
           </ul>
         )}
@@ -52,11 +54,16 @@ Dropdown.propTypes = {
   dropdownTitle: PropTypes.string,
   id: PropTypes.string,
   list: PropTypes.array,
-  getPickedCurrency: PropTypes.func,
+  selectListItemMethod: PropTypes.func,
   overallStyle: PropTypes.string,
   buttonStyle: PropTypes.string,
   listStyle: PropTypes.string,
   listItemStyle: PropTypes.string,
 };
+
+Dropdown.defaultProps = {
+  list: ["Item 1", "Item 2", "Item 3", "Item 4"],
+  selectListItemMethod: () => {}
+}
 
 export { Dropdown };

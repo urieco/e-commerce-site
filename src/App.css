@@ -698,6 +698,10 @@ video {
   top: 35%;
 }
 
+.top-\[1\.575rem\] {
+  top: 1.575rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -720,6 +724,14 @@ video {
 
 .col-start-2 {
   grid-column-start: 2;
+}
+
+.col-start-3 {
+  grid-column-start: 3;
+}
+
+.col-end-2 {
+  grid-column-end: 2;
 }
 
 .m-auto {
@@ -1138,6 +1150,10 @@ video {
   row-gap: 0.5rem;
 }
 
+.self-center {
+  align-self: center;
+}
+
 .justify-self-start {
   justify-self: start;
 }
@@ -1223,6 +1239,11 @@ video {
   border-bottom-width: 10px;
 }
 
+.border-y-2 {
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+}
+
 .border-b-2 {
   border-bottom-width: 2px;
 }
@@ -1239,12 +1260,21 @@ video {
   border-right-width: 10px;
 }
 
+.border-t-2 {
+  border-top-width: 2px;
+}
+
 .border-solid {
   border-style: solid;
 }
 
 .border-\[rgba\(\#676F54\2c 0\.8\)\] {
   border-color: rgba(#676F54,0.8);
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .border-gray-400 {
@@ -1613,6 +1643,11 @@ video {
   letter-spacing: 0.05em;
 }
 
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 .text-gray-200 {
   --tw-text-opacity: 1;
   color: rgb(229 231 235 / var(--tw-text-opacity));
@@ -1796,6 +1831,11 @@ body {
   fill: var(--primary_1);
 }
 
+.hover\:text-cyan-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(14 116 144 / var(--tw-text-opacity));
+}
+
 .hover\:text-gray-600:hover {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
@@ -1805,8 +1845,38 @@ body {
   color: var(--primary_1);
 }
 
+.hover\:shadow-cyan-500\/50:hover {
+  --tw-shadow-color: rgb(6 182 212 / 0.5);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.hover\:shadow-red-500:hover {
+  --tw-shadow-color: #ef4444;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.hover\:shadow-red-200:hover {
+  --tw-shadow-color: #fecaca;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
 .focus\:border-none:focus {
   border-style: none;
+}
+
+.focus\:shadow-cyan-500\/50:focus {
+  --tw-shadow-color: rgb(6 182 212 / 0.5);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.focus\:shadow-cyan-500:focus {
+  --tw-shadow-color: #06b6d4;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.focus\:shadow-red-500:focus {
+  --tw-shadow-color: #ef4444;
+  --tw-shadow: var(--tw-shadow-colored);
 }
 
 .focus\:outline-none:focus {

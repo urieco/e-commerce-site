@@ -15,7 +15,7 @@ function PickCurrency() {
         dropdownTitle={currency}
         id="currencyPicker"
         list={["USD", "EUR", "GBP", "CAD", "JPY", "CNY", "VND"]}
-        getPickedCurrency={getPickedCurrency}
+        selectListItemMethod={getPickedCurrency}
       />
     </>
   );

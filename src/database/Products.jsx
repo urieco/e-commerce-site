@@ -10,7 +10,7 @@ const Products = [
     price: 549,
     discount: 0,
     date: "2023/07/06",
-    totalRating: [{ customerId: "admin", value: 5 }],
+    totalRating: [{ customerId: "admin", value: 4 }],
     rating: function () {
       const avg =
         this.totalRating.reduce((prev, next) => prev + next.value, 0) /
