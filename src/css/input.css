@@ -36,6 +36,18 @@ body {
   }
 }
 
+.popUp { 
+  animation: popUp 0.2s ease-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes popUp {
+  0% {
+    transform: translateY(10%);
+    opacity: 0;
+  }
+}
+
 .active {
   color: #FC2B2B;
   font-weight: 600;

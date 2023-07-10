@@ -9,6 +9,7 @@ const Products = [
     imageURL: "/images/PC - Budget.jpg",
     price: 549,
     discount: 0,
+    date: "2023/07/06",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -27,6 +28,7 @@ const Products = [
     imageURL: "/images/PC - MediumTier.jpg",
     price: 1169,
     discount: 0.19,
+    date: "2023/05/01",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -45,6 +47,7 @@ const Products = [
     imageURL: "/images/PC - MacMini.jpg",
     price: 1899,
     discount: 0.29,
+    date: "2023/07/06",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -63,6 +66,7 @@ const Products = [
     imageURL: "/images/PC - HighTier.jpg",
     price: 2299,
     discount: 0.49,
+    date: "2023/06/06",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -73,7 +77,7 @@ const Products = [
   },
   {
     key: "1l",
-    title: "AcerAspire5A515-56-347N",
+    title: "Acer Aspire 5A515-56-347N",
     description:
       'Slim Laptop - 15.6" Full HD IPS Display - 11th Gen Intel i3-1115G4 Dual Core Processor - 8GB DDR4 - 128GB NVMe SSD - WiFi 6 - Amazon Alexa - Windows 11 Home in S Mode"',
     type: "Laptop",
@@ -81,6 +85,7 @@ const Products = [
     imageURL: "/images/Laptop - AcerAspire5.jpg",
     price: 368,
     discount: 0,
+    date: "2023/07/03",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -100,6 +105,7 @@ const Products = [
     imageURL: "/images/Laptop - AsusFX506HF-ES51.jpg",
     price: 700,
     discount: 0.1,
+    date: "2023/06/30",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -118,6 +124,7 @@ const Products = [
     imageURL: "/images/Laptop - LenovoThinkPadE15.jpg",
     price: 992,
     discount: 0.2,
+    date: "2023/06/24",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -136,6 +143,7 @@ const Products = [
     imageURL: "/images/Laptop - MacbookAir2023.jpg",
     price: 1275,
     discount: 0.3,
+    date: "2023/06/27",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -144,7 +152,7 @@ const Products = [
       return avg;
     },
   },
-  //
+  
   {
     key: "1s",
     title: "Google Pixel 7-5G",
@@ -152,9 +160,10 @@ const Products = [
       "Android Phone - Unlocked Smartphone with Wide Angle Lens and 24-Hour Battery - 128GB - Obsidian",
     type: "Smartphone",
     brand: "Google",
-    imageURL: "/images/Smarphone - Pixel7.jpg",
+    imageURL: "/images/Smartphone - Pixel7.jpg",
     price: 599,
     discount: 0.05,
+    date: "2023/05/06",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -173,6 +182,7 @@ const Products = [
     imageURL: "/images/Smartphone - SamsungS23Ultra.jpg",
     price: 999,
     discount: 0.1,
+    date: "2023/01/06",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -190,6 +200,7 @@ const Products = [
     imageURL: "/images/Smartphone - Xiaomi13Pro.png",
     price: 1049,
     discount: 0.15,
+    date: "2023/04/06",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -207,6 +218,7 @@ const Products = [
     imageURL: "/images/Smartphone - iPhone14ProMax.jpg",
     price: 1299,
     discount: 0.05,
+    date: "2023/07/02",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -224,6 +236,7 @@ const Products = [
     imageURL: "/images/Accessories - AppleAirPods.jpg",
     price: 120,
     discount: 0.1,
+    date: "2023/05/16",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -242,6 +255,7 @@ const Products = [
     imageURL: "/images/Accessories - RazerBlackSharkV2Pro.jpg",
     price: 199,
     discount: 0.15,
+    date: "2022/12/24",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -260,6 +274,7 @@ const Products = [
     imageURL: "/images/Accessories - LogitechGG502.jpg",
     price: 288,
     discount: 0.16,
+    date: "2023/07/05",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =
@@ -277,6 +292,7 @@ const Products = [
     imageURL: "/images/Accessories - Satisfaction75Round2.jpg",
     price: 480,
     discount: 0,
+    date: "2023/05/30",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =

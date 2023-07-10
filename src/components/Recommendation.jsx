@@ -11,7 +11,6 @@ function Recommendation() {
       temp.current.push(randomNumber);
     }
   }
-  console.log(temp.current);
 
   return (
     <>

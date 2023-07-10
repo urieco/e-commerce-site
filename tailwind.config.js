@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       gridTemplateColumns: {
-        fluid: "repeat(auto-fit, minmax(15rem, 1fr))",
+        fluid: "repeat(auto-fill, minmax(12rem, 1fr))",
       },
       colors: {
         primary_1: "var(--primary_1)",

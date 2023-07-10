@@ -4,9 +4,15 @@ import { RouteSwitch } from "./RouteSwitch";
 import { getExchangeRate } from "./components/getExchangeRate";
 
 const CurrencyContext = createContext();
+const FilterContext = createContext();
+const SortingContext = createContext();
 
 function App() {
   const [currency, setCurrency] = useState(getUserCurrencyPreference());
+  const [allFilter, setAllFilter] = useState({ brand: [] });
+  const [sortMethod, setSortMethod] = useState("A to Z");
+  // "Z to A", "Price: Low to High", "Price: High to Slow", "Newest to Oldest", "Oldest to Newest"
+
   const [exchangeRate, setExchangeRate] = useState(1);
 
   function getUserCurrencyPreference() {
@@ -37,10 +43,14 @@ function App() {
   return (
     <>
       <CurrencyContext.Provider value={{ currency, setCurrency, exchangeRate }}>
-        <RouteSwitch />
+        <SortingContext.Provider value={{ sortMethod, setSortMethod }}>
+          <FilterContext.Provider value={{ allFilter, setAllFilter }}>
+            <RouteSwitch />
+          </FilterContext.Provider>
+        </SortingContext.Provider>
       </CurrencyContext.Provider>
     </>
   );
 }
 
-export { App, CurrencyContext };
+export { App, CurrencyContext, FilterContext, SortingContext };

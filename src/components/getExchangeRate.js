@@ -7,10 +7,10 @@ async function getExchangeRate () {
       { mode: "cors" }
     );
     const currencyDataJSON = await currencyData.json();
-    console.log("API called");
     return currencyDataJSON.conversion_rates;
   } catch (err) {
     console.error(err);
+    return { CAD: 1.3301, CNY: 7.2303, EUR:	0.915, GBP: 0.7807, JPY: 142.3952, VND: 23647.5177};
   }
 }
 

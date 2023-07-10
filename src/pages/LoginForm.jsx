@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function LoginForm() {
   return (
     <div className="min-w-screen min-h-screen bg-gradient-to-r from-red-100 to-blue-100 grid">
-      <div className="text-secondary_1 w-max shadow-lg m-auto backdrop-blur-lg">
+      <div className="popUp text-secondary_1 w-max shadow-lg m-auto backdrop-blur-lg">
         <div className="text-gray-200 bg-primary_1 text-center text-3xl font-bold px-10 py-4 ">
           LOGIN
         </div>
@@ -51,7 +51,7 @@ function LoginForm() {
             <div className="relative bottom-[1.5rem] right-[-16.5rem] w-0 h-0 border-solid border-t-transparent border-b-transparent border-y-[10px] border-r-red-800 group-hover:border-r-red-600 border-r-[10px] rotate-180 z-0"></div>
           </label>
         </form>
-        <div className="px-7 pt-24 pb-4 border-x-2 border-b-2">
+        <div className="px-7 pt-28 pb-4 border-x-2 border-b-2">
           A New Face?
           <a href="" className="text-primary_1 underline">
             <Link to="/registration">

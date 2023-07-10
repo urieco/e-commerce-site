@@ -1,33 +1,43 @@
-import { ProductDisplay } from "./ProductDisplay";
-import { SortingSideBar } from "./SortingSideBar";
-import Products from "../database/Products";
+import PropTypes from "prop-types";
 import { useContext, useEffect, useState } from "react";
-import { FilterContext } from "../pages/AllProducts";
+import { useLocation } from "react-router-dom";
+import { FilterContext } from "../App";
+import { ProductDisplay } from "./ProductDisplay";
+import Products from "../database/Products";
 
-function ProductResult() {
+function ProductResult({ category }) {
   const { allFilter } = useContext(FilterContext);
-  const [filteredList, setFilteredList] = useState(Products);
+
+  const initialCategorization = () => {
+    if (category === "All") return Products;
+    else return Products.filter((product) => product.type === category);
+  };
+
+  const [categorizedList, setCategorizedList] = useState([]);
+
+  const location = useLocation();
 
   useEffect(() => {
-    let temp = Products.filter((product) => {
+    let temp = initialCategorization().filter((product) => {
       if (allFilter.brand.length === 0) return product;
       else return allFilter.brand.includes(product.brand);
     });
-    setFilteredList(temp);
-  }, [allFilter]);
+    setCategorizedList(temp);
+  }, [allFilter, location]);
 
   return (
     <>
-      <div className="grid" style={{ gridTemplateColumns: "15rem 1fr" }}>
-        <SortingSideBar />
-        <div className="grid grid-cols-fluid gap-y-2">
-          {filteredList.map((product) => {
-            return <ProductDisplay key={product.key} product={product} />;
-          })}
-        </div>
+      <div className="col-start-2 grid grid-cols-fluid gap-y-2">
+        {categorizedList.map((product) => {
+          return <ProductDisplay key={product.key} product={product} />;
+        })}
       </div>
     </>
   );
 }
+
+ProductResult.propTypes = {
+  category: PropTypes.string,
+};
 
 export { ProductResult };

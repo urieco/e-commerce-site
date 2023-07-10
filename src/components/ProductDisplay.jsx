@@ -84,7 +84,8 @@ function ProductDisplay({ product }) {
   return (
     <>
       <div
-        className="h-[26rem] w-48  border-2 rounded-md shadow-md mx-2 "
+        data-brand={product.brand}
+        className="product h-[26rem] w-48  border-2 rounded-md shadow-md mx-2 "
       >
         <div className="text-right py-1 px-2">
           {monthSinceRelease - 1 < 1 ? (
@@ -101,7 +102,7 @@ function ProductDisplay({ product }) {
           ) : null}
         </div>
 
-        <Link to={`/products/${product.type}/${product.key}`}>
+        <Link to={`/${product.type}/${product.key}`}>
           <div className="h-40 w-44 flex justify-center items-center  my-4">
             <img
               src={product.imageURL}
@@ -178,9 +179,11 @@ ProductDisplay.defaultProps = {
     title: "placeholder",
     description: "placeholder",
     type: "none",
-    imageURL: "/images/vite.svg",
+    brand: "placeholder",
+    imageURL: "/src/images/logo.png",
     price: 1,
     discount: 0,
+    date: "2023/01/01",
     totalRating: [{ customerId: "admin", value: 5 }],
     rating: function () {
       const avg =

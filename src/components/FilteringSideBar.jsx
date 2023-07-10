@@ -1,23 +1,29 @@
 import { useContext, useEffect, useState } from "react";
+import { FilterContext } from "../App";
+import { useLocation } from "react-router-dom";
 
-function SortingSideBar() {
+function FilteringSideBar () {
   const { setAllFilter } = useContext(FilterContext);
   const [filterList, setFilterList] = useState([]);
   const [brandList, setBrandList] = useState([]);
 
   const updateBrandList = () => {
-    let temp = [];
-    document.querySelectorAll(".product").forEach((product) => {
-      const productBrand = product.getAttribute("data-brand");
-      if (!temp.includes(productBrand)) temp.push(productBrand);
-    });
-    setBrandList(temp);
+    setTimeout(() => {
+      let temp = [];
+      document.querySelectorAll(".product").forEach((product) => {
+        const productBrand = product.getAttribute("data-brand");
+        if (!temp.includes(productBrand)) temp.push(productBrand);
+      });
+      setBrandList(temp);
+    }, 10)
   };
+
+  const location = useLocation();
 
   useEffect(() => {
     updateBrandList();
     return () => {};
-  }, []);
+  }, [location]);
 
   const removeFilter = (filter) => {
     let temp = filterList.filter((tag) => tag !== filter);
@@ -84,6 +90,5 @@ function SortingSideBar() {
     </>
   );
 }
-import { FilterContext } from "../pages/AllProducts";
 
-export { SortingSideBar };
+export { FilteringSideBar };
