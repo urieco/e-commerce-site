@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 
-import { CurrencyContext } from "../App";
+import { CartContext, CurrencyContext } from "../App";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { StarRating } from "../components/StarRating";
 import Products from "../database/Products";
+
+import { createOrder } from "../components/createOrder";
 
 import { IoLogoUsd } from "react-icons/io";
 import { BsCurrencyEuro } from "react-icons/bs";
@@ -16,6 +18,7 @@ import { PiCurrencyCnyBold } from "react-icons/pi";
 function ProductPage() {
   const { productId } = useParams();
   const [product] = Products.filter((product) => product.key === productId);
+  const {setItemInCart} = useContext(CartContext);
   const { currency, exchangeRate } = useContext(CurrencyContext);
   const [amountBought, setAmountBought] = useState(0);
 
@@ -88,6 +91,14 @@ function ProductPage() {
       });
   };
 
+  const addToCart = () => {
+    if (!amountBought) return;
+    const order = createOrder(product.title, product.price, product.discount, amountBought);
+    setItemInCart((prev) => [...prev, order]);
+    setAmountBought(0);
+  }
+
+
   return (
     <>
       <Header/>
@@ -149,7 +160,7 @@ function ProductPage() {
             >
               -
             </button>
-            <button className="text-gray-200 bg-primary_1 hover:bg-red-500 font-semibold aboslute bottom-1 px-2 border rounded-lg ml-6 mt-2 cursor-pointer">
+            <button className="text-gray-200 bg-primary_1 hover:bg-red-500 font-semibold aboslute bottom-1 px-2 border rounded-lg ml-6 mt-2 cursor-pointer" onClick={addToCart}>
               Add to Cart
             </button>
           </div>

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import { CurrencyContext } from "../App.jsx";
+import { CartContext, CurrencyContext } from "../App.jsx";
 import { StarRating } from "./StarRating";
 
 import { IoLogoUsd } from "react-icons/io";
@@ -12,7 +12,10 @@ import { PiCurrencyJpyBold } from "react-icons/pi";
 import { PiCurrencyCnyBold } from "react-icons/pi";
 import { BsFillCartFill } from "react-icons/bs";
 
+import { createOrder } from "./createOrder.js";
+
 function ProductDisplay({ product }) {
+  const { setItemInCart } = useContext(CartContext);
   const { currency, exchangeRate } = useContext(CurrencyContext);
   const [amountBought, setAmountBought] = useState(0);
 
@@ -80,6 +83,13 @@ function ProductDisplay({ product }) {
         maximumFractionDigits: 2,
       });
   };
+
+  const addToCart = () => {
+    if (!amountBought) return;
+    const order = createOrder(product.title, product.price, product.discount, amountBought);
+    setItemInCart((prev) => [...prev, order]);
+    setAmountBought(0);
+  }
 
   return (
     <>
@@ -161,7 +171,7 @@ function ProductDisplay({ product }) {
             >
               -
             </button>
-            <BsFillCartFill className="hover:fill-primary_1 w-7 h-7 absolute bottom-0 right-6 p-1 border rounded-lg cursor-pointer" />
+            <BsFillCartFill className="hover:fill-primary_1 w-7 h-7 absolute bottom-0 right-6 p-1 border rounded-lg cursor-pointer" onClick={addToCart}/>
           </div>
         </div>
       </div>

@@ -12,25 +12,25 @@ function Slider() {
   const sample = [
     {
       imageUrl: Slide1,
-      url: "/products/Smartphone/4s",
+      url: "/Smartphone/4s",
       title: "iPhone 14 Pro Max",
       key: 0,
     },
     {
       imageUrl: Slide2,
-      url: "/products/Laptop/4l",
+      url: "/Laptop/4l",
       title: "Macbook Air 2023",
       key: 1,
     },
     {
       imageUrl: Slide3,
-      url: "/products/Accessories/1a",
+      url: "/Accessories/1a",
       title: "AirPods",
       key: 2,
     },
     {
       imageUrl: Slide4,
-      url: "/products/PC/3p",
+      url: "/PC/3p",
       title: "Mac Mini",
       key: 3,
     },

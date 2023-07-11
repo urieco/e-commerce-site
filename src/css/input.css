@@ -48,6 +48,18 @@ body {
   }
 }
 
+.slideLeft {
+  animation: slideLeft 0.1s ease-in-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(20%);
+    opacity: 0;
+  }
+}
+
 .active {
   color: #FC2B2B;
   font-weight: 600;

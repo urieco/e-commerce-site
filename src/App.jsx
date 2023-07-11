@@ -2,17 +2,25 @@ import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import { RouteSwitch } from "./RouteSwitch";
 import { getExchangeRate } from "./components/getExchangeRate";
+import { createOrder } from "./components/createOrder";
+// createOrder(productName, price, discount, amount)
 
+const AccountContext = createContext();
+const CartContext = createContext();
 const CurrencyContext = createContext();
-const FilterContext = createContext();
 const SortingContext = createContext();
+const FilterContext = createContext();
 
 function App() {
+  const [account, setAccount] = useState("unregistered");
+
+  const [itemInCart, setItemInCart] = useState([]);
+
   const [currency, setCurrency] = useState(getUserCurrencyPreference());
-  const [allFilter, setAllFilter] = useState({ brand: [] });
-  const [sortMethod, setSortMethod] = useState("Avg. Customer Review");
-  
   const [exchangeRate, setExchangeRate] = useState(1);
+
+  const [sortMethod, setSortMethod] = useState("Avg. Customer Review");
+  const [allFilter, setAllFilter] = useState({ brand: [] });
 
   function getUserCurrencyPreference() {
     const preference = JSON.parse(localStorage.getItem("userPreference"));
@@ -41,15 +49,21 @@ function App() {
 
   return (
     <>
-      <CurrencyContext.Provider value={{ currency, setCurrency, exchangeRate }}>
-        <SortingContext.Provider value={{ sortMethod, setSortMethod }}>
-          <FilterContext.Provider value={{ allFilter, setAllFilter }}>
-            <RouteSwitch />
-          </FilterContext.Provider>
-        </SortingContext.Provider>
-      </CurrencyContext.Provider>
+      <AccountContext.Provider value={{account, setAccount}}>
+        <CartContext.Provider value={{itemInCart, setItemInCart}}>
+          <CurrencyContext.Provider
+            value={{ currency, setCurrency, exchangeRate }}
+          >
+            <SortingContext.Provider value={{ sortMethod, setSortMethod }}>
+              <FilterContext.Provider value={{ allFilter, setAllFilter }}>
+                <RouteSwitch />
+              </FilterContext.Provider>
+            </SortingContext.Provider>
+          </CurrencyContext.Provider>
+        </CartContext.Provider>
+      </AccountContext.Provider>
     </>
   );
 }
 
-export { App, CurrencyContext, FilterContext, SortingContext };
+export { App, CartContext, CurrencyContext, FilterContext, SortingContext };

@@ -22,8 +22,10 @@ function FilteringSideBar () {
 
   useEffect(() => {
     updateBrandList();
-    return () => {};
-  }, [location]);
+    return () => {
+      setAllFilter({ brand: [] })
+    };
+  }, [location, setAllFilter]);
 
   const removeFilter = (filter) => {
     let temp = filterList.filter((tag) => tag !== filter);

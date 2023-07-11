@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 function CountdownClock() {
-  const [timer, setTimer] = useState(100);
+  const [timer, setTimer] = useState(86500);
 
   const timeValues = useMemo(() => {
     const day = Math.floor(timer / 86400);
