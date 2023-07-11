@@ -81,3 +81,8 @@ body {
   transition: transform 2s ease;
 }
 
+.hidden {
+  visibility: collapse;
+  display: hidden;
+}
+

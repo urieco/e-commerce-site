@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function Slider() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [swipeLeft, setSwipeLeft] = useState(true);
+  const [active, setActive] = useState(false);
 
   const sample = [
     {
@@ -36,33 +36,31 @@ function Slider() {
     },
   ];
 
+
   const goToLeft = () => {
-    setSwipeLeft(true);
-    const slider = document.getElementById("slider");
+    setActive(true);
     setTimeout(() => {
       if (currentIndex === 0) setCurrentIndex(sample.length - 1);
       else setCurrentIndex((prev) => prev - 1);
-    }, 500);
-    slider.classList.add("swipeLeft");
+    }, 200);
+    setActive(false);
   };
 
   const goToRight = () => {
-    setSwipeLeft(false);
-    const slider = document.getElementById("slider");
+    setActive(true);
     setTimeout(() => {
       if (currentIndex === sample.length - 1) setCurrentIndex(0);
       else setCurrentIndex((prev) => prev + 1);
-    }, 500);
-    slider.classList.add("swipeRight");
+    }, 200);
+    setActive(false)
   };
 
-  useEffect(() => {
-    let addedStyle = swipeLeft ? "swipeLeft" : "swipeRight";
-    setTimeout(
-      () => document.getElementById("slider").classList.remove(addedStyle),
-      100
-    );
+  const activeStyle = {
+    opacity: !active ? "1": "0",
+    transition: "opacity 0.2s ease"
+  }
 
+  useEffect(() => {
     const autoplay = setTimeout(() => goToRight(), 10000);
 
     document
@@ -75,11 +73,14 @@ function Slider() {
     return () => {
       clearTimeout(autoplay);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex]);
 
   return (
     <>
-      <div className="text-gray-700 text-2xl font-bold tracking-tighter pb-2 mx-[10vw]">NEW PRODUCTS</div>
+      <div className="text-gray-700 text-2xl font-bold tracking-tighter pb-2 mx-[10vw]">
+        NEW PRODUCTS
+      </div>
       <div className="bg-gray-100 w-[1vw] h-[42vh] absolute py-2 border-l rounded-lg mx-[10vw] shadow-lg z-20"></div>
       <div className="bg-gray-100 w-[1vw] h-[42vh] absolute right-0 py-2 border-r rounded-lg mx-[10vw] shadow-lg z-20"></div>
       <div className="border-x-transparent py-2 border-y rounded-lg mx-[10vw] mb-10 shadow-sm">
@@ -96,18 +97,14 @@ function Slider() {
           >
             {">"}
           </div>
-          <div
-            id="slider"
-            className={`bg-transparent w-[60vw] h-[40vh] absolute ${
-              swipeLeft ? "-right-[50rem]" : "-left-[50rem]"
-            } m-auto z-[5]`}
-          ></div>
-          <Link 
-            to={sample[currentIndex].url} 
-            className="bg-transparent w-[30vw] h-[30vh] absolute left-12 top-12" 
+          <Link
+            to={sample[currentIndex].url}
+            className="bg-transparent w-[30vw] h-[30vh] absolute left-12 top-12"
           />
           <img
+            id="sliderImage"
             className="w-full h-full object-scale-down"
+            style={activeStyle}
             src={sample[currentIndex].imageUrl}
             loading="lazy"
           />
