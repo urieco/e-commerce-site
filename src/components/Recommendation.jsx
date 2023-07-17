@@ -22,9 +22,9 @@ function Recommendation() {
         <div className="flex border shadow-sm overflow-auto">
           {temp.current.map((index) => {
             return (
-              <>
+              <div key={index}>
                 <ProductDisplay product={Products[index]} />
-              </>
+              </div>
             );
           })}
         </div>
