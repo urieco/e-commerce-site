@@ -1,6 +1,19 @@
+import DOMPurify from "dompurify";
 import { Dropdown } from "./Dropdown";
+import { useState } from "react";
 
 function SearchBar() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleChange = (e) => {
+    const sanitizedValue = DOMPurify.sanitize(e.target.value);
+    setSearchQuery(sanitizedValue);
+  }
+  
+  const handleSubmit = (e) => {
+    e.preventDefault(); 
+  }
+
   return (
     <>
       <div 
@@ -28,7 +41,6 @@ function SearchBar() {
             id="searchBtn"
             value="Search"
             className="text-gray-200 bg-primary_1 hover:bg-red-500 font-semibold absolute -right-2 px-2 py-[0.25rem] rounded-r-full cursor-pointer"
-            onClick={(e) => e.preventDefault()}
           />
         </form>
       </div>
