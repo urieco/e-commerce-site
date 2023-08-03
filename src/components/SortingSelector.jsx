@@ -1,15 +1,23 @@
 import { useContext } from "react";
+
 import { Dropdown } from "./Dropdown";
 import { SortingContext } from "../App";
 
-function SortingSelector () {
+function SortingSelector() {
   const { setSortMethod } = useContext(SortingContext);
 
-  const sortingMethod = ["A to Z", "Z to A", "Price: Low to High", "Price: High to Low", "Avg. Customer Review", "Newest Arrivals"];
+  const sortingMethod = [
+    "A to Z",
+    "Z to A",
+    "Price: Low to High",
+    "Price: High to Low",
+    "Avg. Customer Review",
+    "Newest Arrivals",
+  ];
 
   const selectSortMethod = (method) => {
     setSortMethod(method);
-  }
+  };
 
   return (
     <>

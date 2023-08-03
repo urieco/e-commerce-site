@@ -1,4 +1,4 @@
-async function getExchangeRate () {
+async function getExchangeRate() {
   const exchangeRateAPIKEY = import.meta.env.VITE_EXCHANGE_RATE_API_KEY;
 
   try {
@@ -10,7 +10,7 @@ async function getExchangeRate () {
     return currencyDataJSON.conversion_rates;
   } catch (err) {
     console.error(err);
-    return { CAD: 1.3301, CNY: 7.2303, EUR:	0.915, GBP: 0.7807, JPY: 142.3952, VND: 23647.5177};
+    return { CAD: 1.3301, CNY: 7.2303, EUR: 0.915, GBP: 0.7807, JPY: 142.3952, VND: 23647.5177 };
   }
 }
 

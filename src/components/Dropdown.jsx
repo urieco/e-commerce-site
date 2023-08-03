@@ -1,8 +1,19 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+
 import { AiOutlineCaretUp, AiOutlineCaretDown } from "react-icons/ai";
 
-function Dropdown({ dropdownTitle, id, list, selectListItemMethod, activateMethod, overallStyle, buttonStyle, listStyle, listItemStyle}) {
+function Dropdown({
+  dropdownTitle,
+  id,
+  list,
+  selectListItemMethod,
+  activateMethod,
+  overallStyle,
+  buttonStyle,
+  listStyle,
+  listItemStyle,
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [listItem, setListItem] = useState(dropdownTitle);
 
@@ -26,12 +37,14 @@ function Dropdown({ dropdownTitle, id, list, selectListItemMethod, activateMetho
 
   return (
     <>
-      <div className={`text-gray-200 relative flex flex-col items-center w-max rounded ${overallStyle}`}>
+      <div
+        className={`text-gray-200 relative flex flex-col items-center w-max rounded ${overallStyle}`}
+      >
         <button
           id={id}
           className={`min-w-100 grid grid-cols-2 items-center justify-items-start pl-1 hover:text-primary_1 ${buttonStyle}`}
           style={{
-            gridTemplateColumns: "1fr 1rem"
+            gridTemplateColumns: "1fr 1rem",
           }}
           onClick={() => setIsOpen((prev) => !prev)}
         >
@@ -42,7 +55,9 @@ function Dropdown({ dropdownTitle, id, list, selectListItemMethod, activateMetho
         </button>
 
         {isOpen && (
-          <ul className={`text-gray-200 bg-primary_2 w-full absolute top-[1.575rem] flex flex-col items-start pl-1 rounded-b ${listStyle}`}>
+          <ul
+            className={`text-gray-200 bg-primary_2 w-full absolute top-[1.575rem] flex flex-col items-start pl-1 rounded-b ${listStyle}`}
+          >
             {ListDropdown}
           </ul>
         )}
@@ -66,7 +81,7 @@ Dropdown.propTypes = {
 Dropdown.defaultProps = {
   list: ["Item 1", "Item 2", "Item 3", "Item 4"],
   selectListItemMethod: () => {},
-  activateMethod: () => {}
-}
+  activateMethod: () => {},
+};
 
 export { Dropdown };

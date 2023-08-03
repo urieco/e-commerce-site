@@ -24,16 +24,24 @@ function CountdownClock() {
     <>
       <div className="flex gap-2 justify-center ml-6">
         <div className="text-gray-200 bg-primary_1 text-center text-sm w-20 h-20 font-light flex flex-col pt-3 rounded-full shadow-lg">
-          <span className="text-xl font-semibold mb-1">{timeValues.day}</span> DAYS
+          <span className="text-xl font-semibold mb-1">{timeValues.day}</span>{" "}
+          DAYS
         </div>
         <div className="text-gray-200 bg-primary_1 text-center text-sm w-20 h-20 font-light flex flex-col pt-3 rounded-full shadow-lg">
-          <span className="text-xl font-semibold mb-1">{timeValues.hour}</span> HOURS
+          <span className="text-xl font-semibold mb-1">{timeValues.hour}</span>{" "}
+          HOURS
         </div>
         <div className="text-gray-200 bg-primary_1 text-center text-sm w-20 h-20 font-light flex flex-col pt-3 rounded-full shadow-lg">
-          <span className="text-xl font-semibold mb-1">{timeValues.minute}</span> MINUTES
+          <span className="text-xl font-semibold mb-1">
+            {timeValues.minute}
+          </span>{" "}
+          MINUTES
         </div>
         <div className="text-gray-200 bg-primary_1 text-center text-sm w-20 h-20 font-light flex flex-col pt-3 rounded-full shadow-lg">
-          <span className="text-xl font-semibold mb-1">{timeValues.second}</span> SECONDS
+          <span className="text-xl font-semibold mb-1">
+            {timeValues.second}
+          </span>{" "}
+          SECONDS
         </div>
       </div>
     </>

@@ -1,7 +1,6 @@
-
+import { Slider } from "./Slider";
 import { Promotion } from "./Promotion";
 import { Recommendation } from "./Recommendation";
-import { Slider } from "./Slider";
 
 function Content() {
   return (

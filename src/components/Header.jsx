@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { PickCurrency } from "./PickCurrency";
-import { Dropdown } from "./Dropdown";
-import { HeaderTools } from "./HeaderTools";
+
 import { NavBar } from "./NavBar";
+import { Dropdown } from "./Dropdown";
+import { PickCurrency } from "./PickCurrency";
+import { HeaderTools } from "./HeaderTools";
 
 import { BsTelephone } from "react-icons/bs";
 import { TfiEmail } from "react-icons/tfi";
@@ -12,7 +13,6 @@ import { BsCurrencyDollar } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 
 function Header() {
-
   const [accountDisplay, setAccountDisplay] = useState(() => {
     const preference = JSON.parse(sessionStorage.getItem("accountRef"));
     return preference ? preference : "Sign In";
@@ -44,7 +44,7 @@ function Header() {
   useEffect(() => {
     if (accountDisplay !== "Sign In") return setIsSignedIn(true);
     return setIsSignedIn(false);
-  }, [accountDisplay])
+  }, [accountDisplay]);
 
   return (
     <>

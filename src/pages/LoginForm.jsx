@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import DOMPurify from "dompurify";
+
 import { login } from "../api/connectToCloud";
 
 import { AiOutlineUser } from "react-icons/ai";
 import { AiFillLock } from "react-icons/ai";
 
 function LoginForm() {
-  const [currentAccount, setCurrentAccount] = useState("")
+  const [currentAccount, setCurrentAccount] = useState("");
 
   const [loginFormData, setLoginFormData] = useState({
     username: "",
@@ -48,10 +49,7 @@ function LoginForm() {
   };
 
   useEffect(() => {
-    sessionStorage.setItem(
-      "accountRef",
-      JSON.stringify(currentAccount)
-    );
+    sessionStorage.setItem("accountRef", JSON.stringify(currentAccount));
   }, [currentAccount]);
 
   return (

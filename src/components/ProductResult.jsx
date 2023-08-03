@@ -1,6 +1,7 @@
-import PropTypes from "prop-types";
 import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import PropTypes from "prop-types";
+
 import { FilterContext, SortingContext } from "../App";
 import { ProductDisplay } from "./ProductDisplay";
 import { Products } from "../database/Products";
@@ -44,7 +45,9 @@ function ProductResult({ category }) {
   };
 
   const sortedByDate = (array) => {
-    return array.sort((a, b) => (new Date() - new Date(a.date)) - (new Date() - new Date(b.date)));
+    return array.sort(
+      (a, b) => new Date() - new Date(a.date) - (new Date() - new Date(b.date))
+    );
   };
 
   const sorting = (array) => {

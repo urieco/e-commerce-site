@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
-import { Footer } from "../components/Footer";
+
 import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 import { ProductResult } from "../components/ProductResult";
 import { FilteringSideBar } from "../components/FilteringSideBar";
 import { SortingSelector } from "../components/SortingSelector";

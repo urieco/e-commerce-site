@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState } from "react";
-import { FilterContext } from "../App";
 import { useLocation } from "react-router-dom";
 
-function FilteringSideBar () {
+import { FilterContext } from "../App";
+
+function FilteringSideBar() {
   const { setAllFilter } = useContext(FilterContext);
   const [filterList, setFilterList] = useState([]);
   const [brandList, setBrandList] = useState([]);
@@ -15,7 +16,7 @@ function FilteringSideBar () {
         if (!temp.includes(productBrand)) temp.push(productBrand);
       });
       setBrandList(temp);
-    }, 10)
+    }, 10);
   };
 
   const location = useLocation();
@@ -23,7 +24,7 @@ function FilteringSideBar () {
   useEffect(() => {
     updateBrandList();
     return () => {
-      setAllFilter({ brand: [] })
+      setAllFilter({ brand: [] });
     };
   }, [location, setAllFilter]);
 

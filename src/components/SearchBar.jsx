@@ -1,24 +1,22 @@
-import DOMPurify from "dompurify";
-import { Dropdown } from "./Dropdown";
 import { useState } from "react";
+import DOMPurify from "dompurify";
+
+import { Dropdown } from "./Dropdown";
 
 function SearchBar() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleChange = (e) => {
     const sanitizedValue = DOMPurify.sanitize(e.target.value);
-    setSearchQuery(sanitizedValue);
-  }
-  
+  };
+
   const handleSubmit = (e) => {
-    e.preventDefault(); 
-  }
+    e.preventDefault();
+  };
 
   return (
     <>
-      <div 
-        className="justify-self-start flex gap-x-1 ml-5"
-      >
+      <div className="justify-self-start flex gap-x-1 ml-5">
         <Dropdown
           dropdownTitle="Categories"
           id="categorySort"
@@ -27,12 +25,18 @@ function SearchBar() {
           buttonStyle="w-[6.5rem] truncate"
           listStyle="mt-2"
         />
-        <form action="" method="get" className="relative">
+        <form
+          action=""
+          method="get"
+          className="relative"
+          onSubmit={handleSubmit}
+        >
           <input
             type="search"
             name="searchBar"
             id="searchBar"
             className="w-[25vw] hover:bg-gray-200 py-1 pl-2 rounded-r-md focus:border-none focus:outline-none"
+            onChange={handleChange}
             required
           />
           <input

@@ -11,16 +11,16 @@ const FilterContext = createContext();
 function App() {
   const [itemInCart, setItemInCart] = useState([]);
 
+  const getCurrencRef = () => {
+    const preference = JSON.parse(localStorage.getItem("currencyRef"));
+    return preference ? preference : "USD";
+  }
   const [currency, setCurrency] = useState(getCurrencRef());
   const [exchangeRate, setExchangeRate] = useState(1);
 
   const [sortMethod, setSortMethod] = useState("Avg. Customer Review");
   const [allFilter, setAllFilter] = useState({ brand: [] });
 
-  function getCurrencRef() {
-    const preference = JSON.parse(localStorage.getItem("currencyRef"));
-    return preference ? preference : "USD";
-  }
 
   useEffect(() => {
     localStorage.setItem("currencyRef", JSON.stringify(currency));

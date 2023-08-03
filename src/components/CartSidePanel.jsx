@@ -1,16 +1,19 @@
-import PropTypes from "prop-types";
-import { CartItem } from "./CartItem";
 import { useContext } from "react";
+import PropTypes from "prop-types";
+
 import { CartContext, CurrencyContext } from "../App";
+import { CartItem } from "./CartItem";
+
 import { IoLogoUsd } from "react-icons/io";
 import { BsCurrencyEuro } from "react-icons/bs";
 import { PiCurrencyGbpBold } from "react-icons/pi";
 import { PiCurrencyJpyBold } from "react-icons/pi";
 import { PiCurrencyCnyBold } from "react-icons/pi";
 
-function CartView({ onClickMethod }) {
-  const { itemInCart } = useContext(CartContext);
+function CartSidePanel({ onClickMethod }) {
   const { currency } = useContext(CurrencyContext);
+  const { itemInCart } = useContext(CartContext);
+
   const currencySymbol = () => {
     let result;
     switch (currency) {
@@ -47,7 +50,9 @@ function CartView({ onClickMethod }) {
     return <span className="relative top-1">{result} </span>;
   };
 
-  const total = itemInCart.reduce((prev, next) => prev + next.total, 0).toFixed(2);
+  const total = itemInCart
+    .reduce((prev, next) => prev + next.total, 0)
+    .toFixed(2);
 
   return (
     <>
@@ -88,8 +93,8 @@ function CartView({ onClickMethod }) {
   );
 }
 
-CartView.propTypes = {
+CartSidePanel.propTypes = {
   onClickMethod: PropTypes.func,
 };
 
-export { CartView };
+export { CartSidePanel };

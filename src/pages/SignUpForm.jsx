@@ -1,7 +1,9 @@
-import DOMPurify from "dompurify";
 import { useState } from "react";
+import DOMPurify from "dompurify";
 import { Link } from "react-router-dom";
+
 import { FormField } from "../components/FormField";
+
 import { addDataToCloud } from "../api/connectToCloud";
 
 function SignUpForm() {
@@ -51,7 +53,7 @@ function SignUpForm() {
       return {
         username,
         email,
-        password: password.toString()
+        password: password.toString(),
       };
     };
     const exportData = extractData(formData);

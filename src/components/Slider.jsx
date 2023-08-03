@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import Slide1 from "../images/Smartphone - iPhone14ProMax.jpg";
-import Slide2 from "../images/Laptop - MacbookAir2023.jpg";
-import Slide3 from "../images/Accessories - AppleAirPods.jpg";
-import Slide4 from "../images/PC - MacMini.jpg";
 import { Link } from "react-router-dom";
+
+import Slide1 from "/images/Smartphone - iPhone14ProMax.jpg";
+import Slide2 from "/images/Laptop - MacbookAir2023.jpg";
+import Slide3 from "/images/Accessories - AppleAirPods.jpg";
+import Slide4 from "/images/PC - MacMini.jpg";
 
 function Slider() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,7 +37,6 @@ function Slider() {
     },
   ];
 
-
   const goToLeft = () => {
     setActive(true);
     setTimeout(() => {
@@ -52,13 +52,13 @@ function Slider() {
       if (currentIndex === sample.length - 1) setCurrentIndex(0);
       else setCurrentIndex((prev) => prev + 1);
     }, 200);
-    setActive(false)
+    setActive(false);
   };
 
   const activeStyle = {
-    opacity: !active ? "1": "0",
-    transition: "opacity 0.2s ease"
-  }
+    opacity: !active ? "1" : "0",
+    transition: "opacity 0.2s ease",
+  };
 
   useEffect(() => {
     const autoplay = setTimeout(() => goToRight(), 10000);
@@ -73,7 +73,7 @@ function Slider() {
     return () => {
       clearTimeout(autoplay);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex]);
 
   return (

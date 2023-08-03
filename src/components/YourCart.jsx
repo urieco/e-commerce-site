@@ -1,18 +1,20 @@
 import { useContext, useEffect, useState } from "react";
-import { BsFillCartFill } from "react-icons/bs";
+
 import { CartContext } from "../App";
-import { CartView } from "./CartView";
+import { CartSidePanel } from "./CartSidePanel";
+
+import { BsFillCartFill } from "react-icons/bs";
 
 function YourCart() {
   const { itemInCart } = useContext(CartContext);
-  const [openCartView, setOpenCartView] = useState(false);
+  const [openCartSidePanel, setOpenCartSidePanel] = useState(false);
 
   const itemStyle = {
     visibility: itemInCart.length <= 0 ? "hidden" : "visible",
   };
 
   useEffect(() => {
-    if (!itemInCart.length) setOpenCartView(false);
+    if (!itemInCart.length) setOpenCartSidePanel(false);
   }, [itemInCart]);
 
   return (
@@ -21,7 +23,7 @@ function YourCart() {
         className="flex mt-2"
         onClick={() => {
           if (!itemInCart.length) return;
-          setOpenCartView(true)
+          setOpenCartSidePanel(true);
         }}
       >
         <BsFillCartFill className="text-gray-200 hover:text-primary_1 scale-150 cursor-pointer" />
@@ -32,7 +34,9 @@ function YourCart() {
           {itemInCart.length}
         </div>
       </div>
-      {!openCartView ? null : <CartView onClickMethod={() => setOpenCartView(false)}/>}
+      {!openCartSidePanel ? null : (
+        <CartSidePanel onClickMethod={() => setOpenCartSidePanel(false)} />
+      )}
     </>
   );
 }

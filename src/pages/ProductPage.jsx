@@ -2,10 +2,10 @@ import { useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 
 import { CartContext, CurrencyContext } from "../App";
-import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
-import { StarRating } from "../components/StarRating";
+import { Footer } from "../components/Footer";
 import { Products } from "../database/Products";
+import { StarRating } from "../components/StarRating";
 
 import { createOrder } from "../components/createOrder";
 
@@ -18,7 +18,7 @@ import { PiCurrencyCnyBold } from "react-icons/pi";
 function ProductPage() {
   const { productId } = useParams();
   const [product] = Products.filter((product) => product.key === productId);
-  const {setItemInCart} = useContext(CartContext);
+  const { setItemInCart } = useContext(CartContext);
   const { currency, exchangeRate } = useContext(CurrencyContext);
   const [amountBought, setAmountBought] = useState(0);
 
@@ -93,20 +93,24 @@ function ProductPage() {
 
   const addToCart = () => {
     if (!amountBought) return;
-    const order = createOrder(product.title, product.price, product.discount, amountBought);
+    const order = createOrder(
+      product.title,
+      product.price,
+      product.discount,
+      amountBought
+    );
     setItemInCart((prev) => [...prev, order]);
     setAmountBought(0);
-  }
-
+  };
 
   return (
     <>
-      <Header/>
+      <Header />
       <div className="grid grid-cols-2 py-20 border-primary_3 border-4 rounded-lg shadow-lg mx-[10vw] my-2">
         <div className="w-full h-full border-r">
           <img src={product.imageURL} alt={product.title} />
         </div>
-        <div className= "pl-4 border-gray-600 mr-4">
+        <div className="pl-4 border-gray-600 mr-4">
           <div className="font-semibold">
             Brand: <span className="text-blue-600">{product.brand}</span>
           </div>
@@ -160,13 +164,16 @@ function ProductPage() {
             >
               -
             </button>
-            <button className="text-gray-200 bg-primary_1 hover:bg-red-500 font-semibold aboslute bottom-1 px-2 border rounded-lg ml-6 mt-2 cursor-pointer" onClick={addToCart}>
+            <button
+              className="text-gray-200 bg-primary_1 hover:bg-red-500 font-semibold aboslute bottom-1 px-2 border rounded-lg ml-6 mt-2 cursor-pointer"
+              onClick={addToCart}
+            >
               Add to Cart
             </button>
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

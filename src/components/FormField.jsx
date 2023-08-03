@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
-function FormField({ title, type="text", id, onChangeFunc}) {
+function FormField({ title, type = "text", id, onChangeFunc }) {
   return (
     <>
       <label className="flex flex-col pt-4">
@@ -24,6 +24,6 @@ FormField.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string,
   onChangeFunc: PropTypes.func,
-}
+};
 
 export { FormField };

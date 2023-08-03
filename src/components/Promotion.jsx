@@ -1,7 +1,8 @@
-import PromotionalAd from "../images/promotionalAd.png";
-import PromotionPieceLaptop from "../images/promotionalPiece.png";
-import PromotionPieceBackpack from "../images/promotionalPiece2.png";
 import { CountdownClock } from "./CountdownClock";
+
+import PromotionalAd from "/images/promotionalAd.png";
+import PromotionPieceLaptop from "/images/promotionalPiece.png";
+import PromotionPieceBackpack from "/images/promotionalPiece2.png";
 
 function Promotion() {
   return (

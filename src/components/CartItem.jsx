@@ -1,6 +1,8 @@
-import PropTypes from "prop-types";
 import { useContext } from "react";
+import PropTypes from "prop-types";
+
 import { CartContext, CurrencyContext } from "../App";
+
 import { IoLogoUsd } from "react-icons/io";
 import { BsCurrencyEuro } from "react-icons/bs";
 import { PiCurrencyGbpBold } from "react-icons/pi";

@@ -86,10 +86,15 @@ function ProductDisplay({ product }) {
 
   const addToCart = () => {
     if (!amountBought) return;
-    const order = createOrder(product.title, product.price, product.discount, amountBought);
+    const order = createOrder(
+      product.title,
+      product.price,
+      product.discount,
+      amountBought
+    );
     setItemInCart((prev) => [...prev, order]);
     setAmountBought(0);
-  }
+  };
 
   return (
     <>
@@ -124,7 +129,7 @@ function ProductDisplay({ product }) {
             {product.title}
           </div>
         </Link>
-        
+
         <div>
           <StarRating
             id={product.key}
@@ -134,7 +139,9 @@ function ProductDisplay({ product }) {
 
           <div className="text-lg mx-3">
             <div className="flex" style={oldPriceStyle}>
-              <span className="relative top-[0.08rem]">{currencySymbol()} </span>
+              <span className="relative top-[0.08rem]">
+                {currencySymbol()}{" "}
+              </span>
               {specialVietnameseFormat(product.price * exchangeRate)}
             </div>
 
@@ -171,7 +178,10 @@ function ProductDisplay({ product }) {
             >
               -
             </button>
-            <BsFillCartFill className="hover:fill-primary_1 w-7 h-7 absolute bottom-0 right-6 p-1 border rounded-lg cursor-pointer" onClick={addToCart}/>
+            <BsFillCartFill
+              className="hover:fill-primary_1 w-7 h-7 absolute bottom-0 right-6 p-1 border rounded-lg cursor-pointer"
+              onClick={addToCart}
+            />
           </div>
         </div>
       </div>
