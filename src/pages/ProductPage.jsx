@@ -6,14 +6,9 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { Products } from "../database/Products";
 import { StarRating } from "../components/StarRating";
+import { CurrencySymbol } from "../components/CurrencySymbol";
 
 import { createOrder } from "../components/createOrder";
-
-import { IoLogoUsd } from "react-icons/io";
-import { BsCurrencyEuro } from "react-icons/bs";
-import { PiCurrencyGbpBold } from "react-icons/pi";
-import { PiCurrencyJpyBold } from "react-icons/pi";
-import { PiCurrencyCnyBold } from "react-icons/pi";
 
 function ProductPage() {
   const { productId } = useParams();
@@ -28,42 +23,6 @@ function ProductPage() {
     month: "2-digit",
     year: "numeric",
   });
-
-  const currencySymbol = () => {
-    let result;
-    switch (currency) {
-      case "USD":
-        result = <IoLogoUsd />;
-        break;
-      case "EUR":
-        result = <BsCurrencyEuro />;
-        break;
-      case "GBP":
-        result = <PiCurrencyGbpBold />;
-        break;
-      case "CAD":
-        result = (
-          <div className="flex">
-            <span className="relative top-[-0.32rem]">C</span>
-            <IoLogoUsd />
-          </div>
-        );
-        break;
-      case "JPY":
-        result = <PiCurrencyJpyBold />;
-        break;
-      case "CNY":
-        result = <PiCurrencyCnyBold />;
-        break;
-      case "VND":
-        result = "đ";
-        break;
-      default:
-        result = <IoLogoUsd />;
-    }
-    if (result === "đ") return <span>{result} </span>;
-    return <span className="relative top-1">{result} </span>;
-  };
 
   const oldPriceStyle = {
     color: !product.discount ? "rgb(37, 99, 235)" : " rgb(220, 38, 38)",
@@ -129,17 +88,15 @@ function ProductPage() {
           <div className="text-lg flex gap-2 py-4">
             {product.discount ? (
               <div className="flex" style={newPriceStyle}>
-                <span className="relative">{currencySymbol()} </span>
+                <CurrencySymbol />
                 {specialVietnameseFormat(
                   product.price * (1 - product.discount) * exchangeRate
                 )}
               </div>
             ) : null}
             <div className="flex" style={oldPriceStyle}>
-              <span className="relative top-[0.08rem]">
-                {currencySymbol()}{" "}
-              </span>
-              {specialVietnameseFormat(product.price * exchangeRate)}
+              <CurrencySymbol/>
+              <span className="relative bottom-[0.15rem]">{specialVietnameseFormat(product.price * exchangeRate)}</span>
             </div>
           </div>
           <div>{product.description}</div>
@@ -147,12 +104,6 @@ function ProductPage() {
             <div className="text-right font-semibold w-10 px-4 border border-primary_3 mt-2 ml-3">
               {amountBought}
             </div>
-            <button
-              className="hover:bg-gray-200 font-semibold px-4 border-primary_3 border mt-2"
-              onClick={() => setAmountBought((prev) => (prev += 1))}
-            >
-              +
-            </button>
             <button
               className="hover:bg-gray-200 font-semibold px-4 border-primary_3 border mt-2"
               onClick={() =>
@@ -163,6 +114,12 @@ function ProductPage() {
               }
             >
               -
+            </button>
+            <button
+              className="hover:bg-gray-200 font-semibold px-4 border-primary_3 border mt-2"
+              onClick={() => setAmountBought((prev) => (prev += 1))}
+            >
+              +
             </button>
             <button
               className="text-gray-200 bg-primary_1 hover:bg-red-500 font-semibold aboslute bottom-1 px-2 border rounded-lg ml-6 mt-2 cursor-pointer"

@@ -706,6 +706,18 @@ video {
   top: 5.5rem;
 }
 
+.bottom-\[0\.15rem\] {
+  bottom: 0.15rem;
+}
+
+.bottom-\[0\.12rem\] {
+  bottom: 0.12rem;
+}
+
+.bottom-\[0\.1rem\] {
+  bottom: 0.1rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -782,6 +794,11 @@ video {
   margin-bottom: 10vh;
 }
 
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -856,6 +873,10 @@ video {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mt-\[0\.3rem\] {
+  margin-top: 0.3rem;
 }
 
 .line-clamp-1 {
@@ -952,6 +973,11 @@ video {
 .h-max {
   height: -moz-max-content;
   height: max-content;
+}
+
+.h-min {
+  height: -moz-min-content;
+  height: min-content;
 }
 
 .min-h-screen {
@@ -1623,6 +1649,10 @@ video {
   padding-top: 6.5rem;
 }
 
+.pb-1 {
+  padding-bottom: 0.25rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1818,6 +1848,18 @@ video {
   outline-offset: 2px;
 }
 
+.outline {
+  outline-style: solid;
+}
+
+.outline-dashed {
+  outline-style: dashed;
+}
+
+.outline-dotted {
+  outline-style: dotted;
+}
+
 .drop-shadow-md {
   --tw-drop-shadow: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -1941,6 +1983,10 @@ body {
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 
+.hover\:border-primary_1:hover {
+  border-color: var(--primary_1);
+}
+
 .hover\:border-l-primary_1:hover {
   border-left-color: var(--primary_1);
 }
@@ -1948,6 +1994,10 @@ body {
 .hover\:bg-gray-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-primary_1:hover {
+  background-color: var(--primary_1);
 }
 
 .hover\:bg-primary_3:hover {
@@ -1961,6 +2011,14 @@ body {
 
 .hover\:fill-primary_1:hover {
   fill: var(--primary_1);
+}
+
+.hover\:font-bold:hover {
+  font-weight: 700;
+}
+
+.hover\:font-normal:hover {
+  font-weight: 400;
 }
 
 .hover\:text-cyan-700:hover {
@@ -1980,6 +2038,11 @@ body {
 
 .hover\:text-primary_1:hover {
   color: var(--primary_1);
+}
+
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .hover\:shadow-red-200:hover {

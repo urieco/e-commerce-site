@@ -1,54 +1,13 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
 
-import { CartContext, CurrencyContext } from "../App";
+import { CartContext } from "../App";
 import { CartItem } from "./CartItem";
+import { CurrencySymbol } from "./CurrencySymbol";
 
-import { IoLogoUsd } from "react-icons/io";
-import { BsCurrencyEuro } from "react-icons/bs";
-import { PiCurrencyGbpBold } from "react-icons/pi";
-import { PiCurrencyJpyBold } from "react-icons/pi";
-import { PiCurrencyCnyBold } from "react-icons/pi";
 
 function CartSidePanel({ onClickMethod }) {
-  const { currency } = useContext(CurrencyContext);
   const { itemInCart } = useContext(CartContext);
-
-  const currencySymbol = () => {
-    let result;
-    switch (currency) {
-      case "USD":
-        result = <IoLogoUsd />;
-        break;
-      case "EUR":
-        result = <BsCurrencyEuro />;
-        break;
-      case "GBP":
-        result = <PiCurrencyGbpBold />;
-        break;
-      case "CAD":
-        result = (
-          <div className="flex">
-            <span className="relative top-[-0.32rem]">C</span>
-            <IoLogoUsd />
-          </div>
-        );
-        break;
-      case "JPY":
-        result = <PiCurrencyJpyBold />;
-        break;
-      case "CNY":
-        result = <PiCurrencyCnyBold />;
-        break;
-      case "VND":
-        result = "đ";
-        break;
-      default:
-        result = <IoLogoUsd />;
-    }
-    if (result === "đ") return <span>{result} </span>;
-    return <span className="relative top-1">{result} </span>;
-  };
 
   const total = itemInCart
     .reduce((prev, next) => prev + next.total, 0)
@@ -83,8 +42,7 @@ function CartSidePanel({ onClickMethod }) {
           <div className="text-2xl px-2 py-2 border-primary_3 border-t">
             Your Total:
             <span className="flex">
-              {" "}
-              {currencySymbol()} {total}
+              <CurrencySymbol/>{total}
             </span>
           </div>
         </div>

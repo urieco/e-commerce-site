@@ -4,12 +4,8 @@ import { Link } from "react-router-dom";
 
 import { CartContext, CurrencyContext } from "../App.jsx";
 import { StarRating } from "./StarRating";
+import { CurrencySymbol } from "./CurrencySymbol.jsx";
 
-import { IoLogoUsd } from "react-icons/io";
-import { BsCurrencyEuro } from "react-icons/bs";
-import { PiCurrencyGbpBold } from "react-icons/pi";
-import { PiCurrencyJpyBold } from "react-icons/pi";
-import { PiCurrencyCnyBold } from "react-icons/pi";
 import { BsFillCartFill } from "react-icons/bs";
 
 import { createOrder } from "./createOrder.js";
@@ -22,41 +18,6 @@ function ProductDisplay({ product }) {
   const dayDifference = new Date() - new Date(product.date);
   const monthSinceRelease = new Date(dayDifference).getMonth();
 
-  const currencySymbol = () => {
-    let result;
-    switch (currency) {
-      case "USD":
-        result = <IoLogoUsd />;
-        break;
-      case "EUR":
-        result = <BsCurrencyEuro />;
-        break;
-      case "GBP":
-        result = <PiCurrencyGbpBold />;
-        break;
-      case "CAD":
-        result = (
-          <div className="flex">
-            <span className="relative top-[-0.32rem]">C</span>
-            <IoLogoUsd />
-          </div>
-        );
-        break;
-      case "JPY":
-        result = <PiCurrencyJpyBold />;
-        break;
-      case "CNY":
-        result = <PiCurrencyCnyBold />;
-        break;
-      case "VND":
-        result = "đ";
-        break;
-      default:
-        result = <IoLogoUsd />;
-    }
-    if (result === "đ") return <span>{result} </span>;
-    return <span className="relative top-1">{result} </span>;
-  };
 
   const oldPriceStyle = {
     color: !product.discount ? "rgb(37, 99, 235)" : " rgb(220, 38, 38)",
@@ -139,20 +100,20 @@ function ProductDisplay({ product }) {
 
           <div className="text-lg mx-3">
             <div className="flex" style={oldPriceStyle}>
-              <span className="relative top-[0.08rem]">
-                {currencySymbol()}{" "}
+              <CurrencySymbol />
+              <span className="relative bottom-[0.1rem]">
+                {specialVietnameseFormat(product.price * exchangeRate)}
               </span>
-              {specialVietnameseFormat(product.price * exchangeRate)}
             </div>
 
             {product.discount ? (
               <div className="flex" style={newPriceStyle}>
-                <span className="relative top-[0.15rem]">
-                  {currencySymbol()}{" "}
+                <CurrencySymbol />
+                <span className="relative bottom-[0.15rem]">
+                  {specialVietnameseFormat(
+                    product.price * (1 - product.discount) * exchangeRate
+                  )}
                 </span>
-                {specialVietnameseFormat(
-                  product.price * (1 - product.discount) * exchangeRate
-                )}
               </div>
             ) : null}
           </div>
@@ -162,13 +123,7 @@ function ProductDisplay({ product }) {
               {amountBought}
             </div>
             <button
-              className="hover:bg-gray-200 font-semibold px-2 border mt-2"
-              onClick={() => setAmountBought((prev) => (prev += 1))}
-            >
-              +
-            </button>
-            <button
-              className="hover:bg-gray-200 font-semibold px-2 border mt-2"
+              className="hover:bg-gray-200 font-semibold px-3 border mt-2"
               onClick={() =>
                 setAmountBought((prev) => {
                   if (prev <= 0) return (prev = 0);
@@ -177,6 +132,12 @@ function ProductDisplay({ product }) {
               }
             >
               -
+            </button>
+            <button
+              className="hover:bg-gray-200 font-semibold px-3 border mt-2"
+              onClick={() => setAmountBought((prev) => (prev += 1))}
+            >
+              +
             </button>
             <BsFillCartFill
               className="hover:fill-primary_1 w-7 h-7 absolute bottom-0 right-6 p-1 border rounded-lg cursor-pointer"
