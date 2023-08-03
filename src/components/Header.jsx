@@ -1,33 +1,50 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BsTelephone } from "react-icons/bs";
-import { TfiEmail } from "react-icons/tfi";
-import { MdLocationOn } from "react-icons/md";
-import { BsCurrencyDollar } from "react-icons/bs";
-import { AiOutlineUser } from "react-icons/ai";
 import { PickCurrency } from "./PickCurrency";
 import { Dropdown } from "./Dropdown";
 import { HeaderTools } from "./HeaderTools";
 import { NavBar } from "./NavBar";
 
+import { BsTelephone } from "react-icons/bs";
+import { TfiEmail } from "react-icons/tfi";
+import { MdLocationOn } from "react-icons/md";
+import { BsCurrencyDollar } from "react-icons/bs";
+import { AiOutlineUser } from "react-icons/ai";
+
 function Header() {
-  const [account, setAccount] = useState("Sign In");
+
+  const [accountDisplay, setAccountDisplay] = useState(() => {
+    const preference = JSON.parse(sessionStorage.getItem("accountRef"));
+    return preference ? preference : "Sign In";
+  });
 
   // Prevent redirecting to /login
   const [isSignedIn, setIsSignedIn] = useState(false);
 
   const handleClick = (e) => {
     if (isSignedIn) e.preventDefault();
-  }
+  };
 
-  const accountDropdown = (
-    <Dropdown 
-      dropdownTitle={account} 
-      id="accountSetting" 
-      list={["Setting", "Logout"]}
-      getPickedCurrency={null} 
+  const logOutBtn = (logOutConfirm) => {
+    if (logOutConfirm !== "Logout") return;
+    setAccountDisplay("Sign In");
+    sessionStorage.removeItem("accountRef");
+  };
+
+  const accountDisplayDropdown = (
+    <Dropdown
+      dropdownTitle={accountDisplay}
+      id="accountSetting"
+      list={["Logout"]}
+      activateMethod={logOutBtn}
+      overallStyle="z-30"
     />
   );
+
+  useEffect(() => {
+    if (accountDisplay !== "Sign In") return setIsSignedIn(true);
+    return setIsSignedIn(false);
+  }, [accountDisplay])
 
   return (
     <>
@@ -55,14 +72,14 @@ function Header() {
             <div className="flex gap-x-1 hover:text-primary_1 pr-2 cursor-pointer">
               <AiOutlineUser className="text-primary_1 mt-1.5" />
               <Link to="/login" onClick={handleClick}>
-                {isSignedIn ? accountDropdown : account}
+                {isSignedIn ? accountDisplayDropdown : accountDisplay}
               </Link>
             </div>
           </div>
         </div>
 
-        <HeaderTools/>
-        <NavBar/>
+        <HeaderTools />
+        <NavBar />
       </div>
     </>
   );

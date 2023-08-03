@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { FilterContext, SortingContext } from "../App";
 import { ProductDisplay } from "./ProductDisplay";
-import Products from "../database/Products";
+import { Products } from "../database/Products";
 
 function ProductResult({ category }) {
   const { allFilter } = useContext(FilterContext);

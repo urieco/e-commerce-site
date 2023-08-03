@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { AiOutlineCaretUp, AiOutlineCaretDown } from "react-icons/ai";
 
-function Dropdown({ dropdownTitle, id, list, selectListItemMethod, overallStyle, buttonStyle, listStyle, listItemStyle}) {
+function Dropdown({ dropdownTitle, id, list, selectListItemMethod, activateMethod, overallStyle, buttonStyle, listStyle, listItemStyle}) {
   const [isOpen, setIsOpen] = useState(false);
   const [listItem, setListItem] = useState(dropdownTitle);
 
@@ -16,6 +16,7 @@ function Dropdown({ dropdownTitle, id, list, selectListItemMethod, overallStyle,
           setListItem(clickedElementValue);
           setIsOpen(false);
           selectListItemMethod(clickedElementValue);
+          activateMethod(clickedElementValue);
         }}
       >
         {item}
@@ -55,6 +56,7 @@ Dropdown.propTypes = {
   id: PropTypes.string,
   list: PropTypes.array,
   selectListItemMethod: PropTypes.func,
+  activateMethod: PropTypes.func,
   overallStyle: PropTypes.string,
   buttonStyle: PropTypes.string,
   listStyle: PropTypes.string,
@@ -63,7 +65,8 @@ Dropdown.propTypes = {
 
 Dropdown.defaultProps = {
   list: ["Item 1", "Item 2", "Item 3", "Item 4"],
-  selectListItemMethod: () => {}
+  selectListItemMethod: () => {},
+  activateMethod: () => {}
 }
 
 export { Dropdown };

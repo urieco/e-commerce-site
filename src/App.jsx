@@ -2,36 +2,28 @@ import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import { RouteSwitch } from "./RouteSwitch";
 import { getExchangeRate } from "./components/getExchangeRate";
-import { createOrder } from "./components/createOrder";
-// createOrder(productName, price, discount, amount)
 
-const AccountContext = createContext();
 const CartContext = createContext();
 const CurrencyContext = createContext();
 const SortingContext = createContext();
 const FilterContext = createContext();
 
 function App() {
-  const [account, setAccount] = useState("unregistered");
-
   const [itemInCart, setItemInCart] = useState([]);
 
-  const [currency, setCurrency] = useState(getUserCurrencyPreference());
+  const [currency, setCurrency] = useState(getCurrencRef());
   const [exchangeRate, setExchangeRate] = useState(1);
 
   const [sortMethod, setSortMethod] = useState("Avg. Customer Review");
   const [allFilter, setAllFilter] = useState({ brand: [] });
 
-  function getUserCurrencyPreference() {
-    const preference = JSON.parse(localStorage.getItem("userPreference"));
-    return preference ? preference.currencyPref : "USD";
+  function getCurrencRef() {
+    const preference = JSON.parse(localStorage.getItem("currencyRef"));
+    return preference ? preference : "USD";
   }
 
   useEffect(() => {
-    localStorage.setItem(
-      "userPreference",
-      JSON.stringify({ currencyPref: currency })
-    );
+    localStorage.setItem("currencyRef", JSON.stringify(currency));
 
     const cachedExchangeRate = JSON.parse(
       sessionStorage.getItem("cachedExchangeRate")
@@ -49,21 +41,25 @@ function App() {
 
   return (
     <>
-      <AccountContext.Provider value={{account, setAccount}}>
-        <CartContext.Provider value={{itemInCart, setItemInCart}}>
-          <CurrencyContext.Provider
-            value={{ currency, setCurrency, exchangeRate }}
-          >
-            <SortingContext.Provider value={{ sortMethod, setSortMethod }}>
-              <FilterContext.Provider value={{ allFilter, setAllFilter }}>
-                <RouteSwitch />
-              </FilterContext.Provider>
-            </SortingContext.Provider>
-          </CurrencyContext.Provider>
-        </CartContext.Provider>
-      </AccountContext.Provider>
+      <CartContext.Provider value={{ itemInCart, setItemInCart }}>
+        <CurrencyContext.Provider
+          value={{ currency, setCurrency, exchangeRate }}
+        >
+          <SortingContext.Provider value={{ sortMethod, setSortMethod }}>
+            <FilterContext.Provider value={{ allFilter, setAllFilter }}>
+              <RouteSwitch />
+            </FilterContext.Provider>
+          </SortingContext.Provider>
+        </CurrencyContext.Provider>
+      </CartContext.Provider>
     </>
   );
 }
 
-export { App, CartContext, CurrencyContext, FilterContext, SortingContext };
+export {
+  App,
+  CartContext,
+  CurrencyContext,
+  SortingContext,
+  FilterContext,
+};

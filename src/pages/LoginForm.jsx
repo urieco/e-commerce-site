@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import DOMPurify from "dompurify";
+import { login } from "../api/connectToCloud";
+
 import { AiOutlineUser } from "react-icons/ai";
 import { AiFillLock } from "react-icons/ai";
-import { Link } from "react-router-dom";
 
 function LoginForm() {
+  const [currentAccount, setCurrentAccount] = useState("")
+
   const [loginFormData, setLoginFormData] = useState({
     username: "",
     password: "",
@@ -16,8 +20,7 @@ function LoginForm() {
     const { name, value } = e.target;
     const sanitizedValue = DOMPurify.sanitize(value);
     if (value !== sanitizedValue) {
-      setErrorMessage(`Invalid inputs for ${name}`);
-      return;
+      return setErrorMessage(`Invalid inputs for ${name}`);
     }
     setErrorMessage("");
     setLoginFormData((prevData) => ({ ...prevData, [name]: sanitizedValue }));
@@ -41,8 +44,15 @@ function LoginForm() {
     const invalidKey = isInvalid(loginFormData);
     setErrorMessage(invalidKey);
     if (invalidKey) return;
-    // code here
+    login(loginFormData, setErrorMessage, setCurrentAccount);
   };
+
+  useEffect(() => {
+    sessionStorage.setItem(
+      "accountRef",
+      JSON.stringify(currentAccount)
+    );
+  }, [currentAccount]);
 
   return (
     <div className="min-w-screen min-h-screen bg-gradient-to-r from-red-100 to-blue-100 grid">

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import Products from "../database/Products";
+import { Products } from "../database/Products";
 import { ProductDisplay } from "./ProductDisplay";
 
 function Recommendation() {

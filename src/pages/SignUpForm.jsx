@@ -1,7 +1,8 @@
 import DOMPurify from "dompurify";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FormField } from "../components/FormField";
-import { useState } from "react";
+import { addDataToCloud } from "../api/connectToCloud";
 
 function SignUpForm() {
   const [formData, setFormData] = useState({
@@ -45,7 +46,16 @@ function SignUpForm() {
     const invalidKey = isInvalid(formData);
     setErrorMessage(invalidKey);
     if (invalidKey) return;
-    // code here
+    const extractData = (obj) => {
+      const { username, email, password } = obj;
+      return {
+        username,
+        email,
+        password: password.toString()
+      };
+    };
+    const exportData = extractData(formData);
+    addDataToCloud(exportData, "users");
   };
 
   return (

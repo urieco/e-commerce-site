@@ -5,7 +5,7 @@ import { CartContext, CurrencyContext } from "../App";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { StarRating } from "../components/StarRating";
-import Products from "../database/Products";
+import { Products } from "../database/Products";
 
 import { createOrder } from "../components/createOrder";
 
