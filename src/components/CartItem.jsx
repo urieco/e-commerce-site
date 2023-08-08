@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
 
-import { CartContext } from "../App";
+import { CartContext, CurrencyContext } from "../App";
 import { CurrencySymbol } from "./CurrencySymbol";
 
+import { specialVietnameseFormat } from "./specialVietnameseFormat";
 
 function CartItem({ item }) {
+  const { currency, exchangeRate } = useContext(CurrencyContext);
   const { setItemInCart } = useContext(CartContext);
 
   return (
@@ -18,17 +20,26 @@ function CartItem({ item }) {
           <div className="font-semibold line-clamp-1">{item.productName}</div>
           <div className="flex">
             <div className="flex">
-              <CurrencySymbol/>
-              {(item.price * (1 - item.discount)).toFixed(2)}
+              <CurrencySymbol />
+              {specialVietnameseFormat(
+                (item.price * (1 - item.discount) * exchangeRate).toFixed(2),
+                currency
+              )}
             </div>
             <div className="ml-2">
               x<span className="ml-2">{item.amount}</span>
             </div>
           </div>
           <div className="font-semibold flex">
-            Subtotal:{" "}
-            <CurrencySymbol/>
-            <span className="text-md">{item.total}</span>
+            Subtotal: <CurrencySymbol />
+            <span className="text-md">
+              {specialVietnameseFormat(
+                parseFloat(
+                  (item.price * (1 - item.discount) * item.amount * exchangeRate).toFixed(2)
+                ),
+                currency
+              )}
+            </span>
           </div>
         </div>
         <button

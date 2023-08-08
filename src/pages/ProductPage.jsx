@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useContext, useState } from "react";
+import uniqid from "uniqid";
 
 import { CartContext, CurrencyContext } from "../App";
 import { Header } from "../components/Header";
@@ -8,7 +9,7 @@ import { Products } from "../database/Products";
 import { StarRating } from "../components/StarRating";
 import { CurrencySymbol } from "../components/CurrencySymbol";
 
-import { createOrder } from "../components/createOrder";
+import { specialVietnameseFormat } from "../components/specialVietnameseFormat";
 
 function ProductPage() {
   const { productId } = useParams();
@@ -38,27 +39,19 @@ function ProductPage() {
     textDecoration: product.discount ? "" : "line-through",
   };
 
-  const specialVietnameseFormat = (number) => {
-    if (currency === "VND")
-      return number.toLocaleString("vi-VN", {
-        maximumFractionDigits: 0,
-      });
-    else
-      return number.toLocaleString("en-US", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      });
-  };
-
   const addToCart = () => {
     if (!amountBought) return;
-    const order = createOrder(
-      product.title,
-      product.price,
-      product.discount,
-      amountBought
-    );
-    setItemInCart((prev) => [...prev, order]);
+
+    setItemInCart((prev) => [
+      ...prev,
+      {
+        productName: product.title,
+        id: uniqid(),
+        price: product.price,
+        discount: product.discount,
+        amount: amountBought,
+      },
+    ]);
     setAmountBought(0);
   };
 
@@ -90,13 +83,19 @@ function ProductPage() {
               <div className="flex" style={newPriceStyle}>
                 <CurrencySymbol />
                 {specialVietnameseFormat(
-                  product.price * (1 - product.discount) * exchangeRate
+                  product.price * (1 - product.discount) * exchangeRate,
+                  currency
                 )}
               </div>
             ) : null}
             <div className="flex" style={oldPriceStyle}>
-              <CurrencySymbol/>
-              <span className="relative bottom-[0.15rem]">{specialVietnameseFormat(product.price * exchangeRate)}</span>
+              <CurrencySymbol />
+              <span className="relative bottom-[0.15rem]">
+                {specialVietnameseFormat(
+                  product.price * exchangeRate,
+                  currency
+                )}
+              </span>
             </div>
           </div>
           <div>{product.description}</div>

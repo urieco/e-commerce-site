@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import uniqid from "uniqid";
 
 import { CartContext, CurrencyContext } from "../App.jsx";
 import { StarRating } from "./StarRating";
@@ -8,7 +9,7 @@ import { CurrencySymbol } from "./CurrencySymbol.jsx";
 
 import { BsFillCartFill } from "react-icons/bs";
 
-import { createOrder } from "./createOrder.js";
+import { specialVietnameseFormat } from "./specialVietnameseFormat.js";
 
 function ProductDisplay({ product }) {
   const { setItemInCart } = useContext(CartContext);
@@ -17,7 +18,6 @@ function ProductDisplay({ product }) {
 
   const dayDifference = new Date() - new Date(product.date);
   const monthSinceRelease = new Date(dayDifference).getMonth();
-
 
   const oldPriceStyle = {
     color: !product.discount ? "rgb(37, 99, 235)" : " rgb(220, 38, 38)",
@@ -33,27 +33,19 @@ function ProductDisplay({ product }) {
     textDecoration: product.discount ? "" : "line-through",
   };
 
-  const specialVietnameseFormat = (number) => {
-    if (currency === "VND")
-      return number.toLocaleString("vi-VN", {
-        maximumFractionDigits: 0,
-      });
-    else
-      return number.toLocaleString("en-US", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      });
-  };
-
   const addToCart = () => {
     if (!amountBought) return;
-    const order = createOrder(
-      product.title,
-      product.price,
-      product.discount,
-      amountBought
-    );
-    setItemInCart((prev) => [...prev, order]);
+
+    setItemInCart((prev) => [
+      ...prev,
+      {
+        productName: product.title,
+        id: uniqid(),
+        price: product.price,
+        discount: product.discount,
+        amount: amountBought,
+      },
+    ]);
     setAmountBought(0);
   };
 
@@ -102,7 +94,10 @@ function ProductDisplay({ product }) {
             <div className="flex" style={oldPriceStyle}>
               <CurrencySymbol />
               <span className="relative bottom-[0.1rem]">
-                {specialVietnameseFormat(product.price * exchangeRate)}
+                {specialVietnameseFormat(
+                  product.price * exchangeRate,
+                  currency
+                )}
               </span>
             </div>
 
@@ -111,7 +106,8 @@ function ProductDisplay({ product }) {
                 <CurrencySymbol />
                 <span className="relative bottom-[0.15rem]">
                   {specialVietnameseFormat(
-                    product.price * (1 - product.discount) * exchangeRate
+                    product.price * (1 - product.discount) * exchangeRate,
+                    currency
                   )}
                 </span>
               </div>

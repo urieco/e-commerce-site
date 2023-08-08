@@ -1,16 +1,28 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
 
-import { CartContext } from "../App";
+import { CartContext, CurrencyContext } from "../App";
 import { CartItem } from "./CartItem";
 import { CurrencySymbol } from "./CurrencySymbol";
 
+import { specialVietnameseFormat } from "./specialVietnameseFormat";
 
 function CartSidePanel({ onClickMethod }) {
+  const { currency, exchangeRate } = useContext(CurrencyContext);
   const { itemInCart } = useContext(CartContext);
 
   const total = itemInCart
-    .reduce((prev, next) => prev + next.total, 0)
+    .reduce((prev, next) => {
+      return prev +
+        parseFloat(
+          (
+            next.price *
+            (1 - next.discount) *
+            next.amount *
+            exchangeRate
+          )
+        );
+    }, 0)
     .toFixed(2);
 
   return (
@@ -42,7 +54,8 @@ function CartSidePanel({ onClickMethod }) {
           <div className="text-2xl px-2 py-2 border-primary_3 border-t">
             Your Total:
             <span className="flex">
-              <CurrencySymbol/>{total}
+              <CurrencySymbol />
+              {specialVietnameseFormat(total, currency)}
             </span>
           </div>
         </div>
