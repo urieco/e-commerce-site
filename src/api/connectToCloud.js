@@ -4,9 +4,15 @@ import { getFirestore, collection, doc, setDoc, getDoc } from "firebase/firestor
 
 const db = getFirestore(firebaseApp);
 
-const addDataToCloud = (data, collectionName) => {
+const addUser = async (data, errorFunc) => {
   try {
-    setDoc(doc(collection(db, collectionName), data.username), data, { merge: true });
+    const checkUserRef = doc(db, "users", data.username);
+    const querySnapshot = await getDoc(checkUserRef);
+    if (querySnapshot.exists()) 
+      return errorFunc("Username already exists");
+
+    setDoc(doc(collection(db, "users"), data.username), data, { merge: true });
+    setTimeout(() => window.history.back(), 500);
   } catch (e) {
     console.log("Unexpected Error while adding document: ", e);
   }
@@ -33,4 +39,4 @@ const login = async (loginData, errorFunc, setAccountFunc) => {
 }
 
 
-export { addDataToCloud, login };
+export { addUser, login };

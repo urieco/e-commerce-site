@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 
 import { FormField } from "../components/FormField";
 
-import { addDataToCloud } from "../api/connectToCloud";
+import { addUser } from "../api/connectToCloud";
+import { BackToHomeBtn } from "../components/BackToHomeBtn";
 
 function SignUpForm() {
   const [formData, setFormData] = useState({
@@ -57,11 +58,12 @@ function SignUpForm() {
       };
     };
     const exportData = extractData(formData);
-    addDataToCloud(exportData, "users");
+    addUser(exportData, setErrorMessage);
   };
 
   return (
     <div className="min-w-screen min-h-screen bg-gradient-to-r from-red-100 to-blue-100 grid">
+      <BackToHomeBtn/>
       <div className="popUp text-secondary_1 w-max h-max items-center justify-self-center shadow-lg mt-36 mb-48">
         <div className="text-gray-200 bg-primary_1 text-center text-3xl font-bold px-16 py-4 ">
           REGISTRATION

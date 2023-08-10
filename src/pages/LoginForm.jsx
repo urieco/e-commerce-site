@@ -6,6 +6,7 @@ import { login } from "../api/connectToCloud";
 
 import { AiOutlineUser } from "react-icons/ai";
 import { AiFillLock } from "react-icons/ai";
+import { BackToHomeBtn } from "../components/BackToHomeBtn";
 
 function LoginForm() {
   const [currentAccount, setCurrentAccount] = useState("");
@@ -54,6 +55,7 @@ function LoginForm() {
 
   return (
     <div className="min-w-screen min-h-screen bg-gradient-to-r from-red-100 to-blue-100 grid">
+      <BackToHomeBtn/>
       <div className="popUp text-secondary_1 w-max shadow-lg m-auto backdrop-blur-lg">
         <div className="text-gray-200 bg-primary_1 text-center text-3xl font-bold px-10 py-4 ">
           LOGIN
@@ -96,11 +98,11 @@ function LoginForm() {
               name="loginBtn"
               id="loginBtn"
               value="LOGIN"
-              className="text-gray-200 bg-primary_1 group-hover:bg-red-500 text-2xl font-semibold w-[19.75rem] relative top-2 -left-10 py-3 rounded-md mt-4 cursor-pointer active:scale-[101%] z-10 select-none"
+              className="text-gray-200 bg-primary_1 group-hover:bg-red-500 text-2xl font-semibold w-[18.75rem] relative top-2 -left-10 py-3 rounded-md mt-4 cursor-pointer active:scale-[101%] z-10 select-none"
             />
             <div className="relative bottom-[0.4rem] left-[-2.5rem] w-0 h-0 border-solid border-t-transparent border-b-transparent border-y-[10px] border-r-red-800 group-hover:border-r-red-600 border-r-[10px] z-0"></div>
 
-            <div className="relative bottom-[1.5rem] right-[-16.5rem] w-0 h-0 border-solid border-t-transparent border-b-transparent border-y-[10px] border-r-red-800 group-hover:border-r-red-600 border-r-[10px] rotate-180 z-0"></div>
+            <div className="relative bottom-[1.5rem] right-[-15.5rem] w-0 h-0 border-solid border-t-transparent border-b-transparent border-y-[10px] border-r-red-800 group-hover:border-r-red-600 border-r-[10px] rotate-180 z-0"></div>
           </label>
         </form>
         <div className="text-primary_1 relative top-[5.5rem] px-7">
