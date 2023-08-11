@@ -35,7 +35,7 @@ function SearchBar() {
             type="search"
             name="searchBar"
             id="searchBar"
-            className="w-[25vw] hover:bg-gray-200 py-1 pl-2 rounded-r-md focus:border-none focus:outline-none"
+            className="w-[30vw] hover:bg-gray-200 py-1 pl-2 rounded-r-md focus:border-none focus:outline-none"
             onChange={handleChange}
             required
           />

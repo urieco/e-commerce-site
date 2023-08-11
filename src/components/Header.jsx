@@ -48,7 +48,7 @@ function Header() {
 
   return (
     <>
-      <div className="sticky top-0 z-50">
+      <header className="sticky top-0 z-50">
         <div className="bg-primary_2 text-gray-200 font-semibold flex place-content-between px-[10vw]">
           <div className="flex gap-x-2">
             <div className="flex gap-x-1">
@@ -75,12 +75,17 @@ function Header() {
                 {isSignedIn ? accountDisplayDropdown : accountDisplay}
               </Link>
             </div>
+            {isSignedIn ? null : (
+              <div className="text-white bg-primary_1 hover:bg-red-500 px-2 rounded-sm">
+                <Link to="/registration">Sign Up</Link>
+              </div>
+            )}
           </div>
         </div>
 
         <HeaderTools />
         <NavBar />
-      </div>
+      </header>
     </>
   );
 }

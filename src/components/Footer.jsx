@@ -6,7 +6,7 @@ import { AiOutlineInstagram } from "react-icons/ai";
 function Footer() {
   return (
     <>
-      <div className="text-gray-200 bg-primary_2 pt-10">
+      <footer className="text-gray-200 bg-primary_2 pt-10">
         <div className="grid grid-flow-col gap-8 lg:gap-28 mx-[10vw] pb-10">
           <div>
             <div className="text-primary_1 text-lg font-extralight text-start pb-2 border-b-2 border-b-red-600">
@@ -58,7 +58,7 @@ function Footer() {
             </span>
           </div>
         </div>
-      </div>
+      </footer>
     </>
   );
 }

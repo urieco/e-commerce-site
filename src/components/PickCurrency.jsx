@@ -17,6 +17,7 @@ function PickCurrency() {
         id="currencyPicker"
         list={["USD", "EUR", "GBP", "CAD", "JPY", "CNY", "VND"]}
         selectListItemMethod={getPickedCurrency}
+        overallStyle="relative z-10"
       />
     </>
   );

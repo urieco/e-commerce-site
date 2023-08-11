@@ -5,11 +5,11 @@ import { Recommendation } from "./Recommendation";
 function Content() {
   return (
     <>
-      <div className="mt-10">
+      <main className="mt-10">
         <Slider />
         <Promotion />
         <Recommendation />
-      </div>
+      </main>
     </>
   );
 }

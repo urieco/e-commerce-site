@@ -9,11 +9,12 @@
 - Product list sorted by four categories: PC, Laptop, Smartphone, Accessories
 - Filterting by brands
 - Sorting methods: A to Z, Z to A, Price: Low to High, Price: High to Low, Avg. Customer Review, Newest Arrivals
+- Sign In/ Sign Up Authentication
+- Firebase deployment
+- Storing users' accounts on Firestore
 
 # Planned Features:
 - Searchbar
-- Sign In/ Sign Up Authentication
-- Firebase deployment
 - Rating
 - Upload your own products
 - Leaving comments
@@ -23,5 +24,8 @@
 - Vite
 - TailwindCSS
 - React
+- Firebase, Firestore
 - react-router-dom
+- dompurify
+- uniqid
 - react-icons
