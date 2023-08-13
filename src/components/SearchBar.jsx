@@ -1,30 +1,96 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import DOMPurify from "dompurify";
 
-import { Dropdown } from "./Dropdown";
-
-function SearchBar() {
-  const [searchQuery, setSearchQuery] = useState("");
+function SearchBar({ suggestions }) {
+  const [userInput, setUserInput] = useState("");
+  const [activeSuggestion, setActiveSuggestion] = useState(0);
+  const [filteredSuggestions, setFilteredSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState("");
 
   const handleChange = (e) => {
     const sanitizedValue = DOMPurify.sanitize(e.target.value);
+    setUserInput(sanitizedValue);
+    setFilteredSuggestions(() => {
+      if (!sanitizedValue) return [];
+      return suggestions.filter(
+        (suggestion) =>
+          suggestion.title.toLowerCase().indexOf(sanitizedValue.toLowerCase()) >
+          -1
+      );
+    });
+    setShowSuggestions(true);
+  };
+
+  const handleKeyDown = (e) => {
+    // Enter
+    if (e.keyCode === 13) {
+      setActiveSuggestion(0);
+      setUserInput(filteredSuggestions[activeSuggestion]);
+    } else if (e.keyCode === 38) {
+      // Up Arrow
+      if (activeSuggestion === 0) {
+        return;
+      }
+      setActiveSuggestion((prev) => prev - 1);
+    } else if (e.keyCode === 40) {
+      // Down Arrow
+      if (activeSuggestion - 1 === filteredSuggestions.length) {
+        return;
+      }
+      setActiveSuggestion((prev) => prev + 1);
+    } else if (e.keyCode === 27) {
+      // Esc
+      setShowSuggestions(false);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // setFilteredSuggestions([]);
+    const routingValue = document.querySelector(`.suggestionItem[data-index="${activeSuggestion}"]`).getAttribute("data-routing");
+    window.location.href = `${routingValue}`;
+  };
+
+  const SuggestionList = () => {
+    const onSuggestionClick = (e) => {
+      const routingValue = e.currentTarget.getAttribute("data-routing");
+      window.location.href = `${routingValue}`;
+    };
+
+    if (showSuggestions && userInput) {
+      if (filteredSuggestions.length) {
+        return (
+          <ul className="absolute w-full pr-14">
+            {filteredSuggestions.map((suggestion, index) => {
+              let selected;
+              if (index === activeSuggestion) {
+                selected = "bg-red-100";
+              }
+              return (
+                <li
+                  className={`suggestionItem bg-gray-100 hover:bg-red-100 cursor-pointer pb-2 border ${selected}`}
+                  key={suggestion.key}
+                  data-index={index}
+                  data-routing={`/${suggestion.type}/${suggestion.key}`}
+                  onMouseEnter={() => setActiveSuggestion(index)}
+                  onClick={onSuggestionClick}
+                >
+                  {suggestion.title}
+                </li>
+              );
+            })}
+          </ul>
+        );
+      }
+    } else {
+      return null;
+    }
   };
 
   return (
     <>
       <div className="justify-self-start flex gap-x-1 ml-5">
-        <Dropdown
-          dropdownTitle="Categories"
-          id="categorySort"
-          list={["PC", "Laptop", "Smartphone", "Accessories"]}
-          overallStyle="pt-1 border border-red-600"
-          buttonStyle="w-[6.5rem] truncate"
-          listStyle="mt-2"
-        />
         <form
           action=""
           method="get"
@@ -35,10 +101,15 @@ function SearchBar() {
             type="search"
             name="searchBar"
             id="searchBar"
-            className="w-[30vw] hover:bg-gray-200 py-1 pl-2 rounded-r-md focus:border-none focus:outline-none"
+            className="w-[40vw] hover:bg-gray-200 py-1 pl-2 rounded-r-md focus:border-none focus:outline-none"
+            onKeyDown={handleKeyDown}
             onChange={handleChange}
+            onFocus={() => setShowSuggestions(true)}
+            onClick={() => setShowSuggestions(true)}
+            onBlur={() => setShowSuggestions(false)}
             required
           />
+          {SuggestionList()}
           <input
             type="submit"
             name="searchBtn"
@@ -51,5 +122,13 @@ function SearchBar() {
     </>
   );
 }
+
+SearchBar.propTypes = {
+  suggestions: PropTypes.array,
+};
+
+SearchBar.defaultProps = {
+  suggestions: [],
+};
 
 export { SearchBar };

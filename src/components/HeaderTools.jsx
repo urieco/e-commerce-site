@@ -5,6 +5,8 @@ import { YourCart } from "./YourCart";
 
 import Logo from "/images/logo.png";
 
+import { Products } from "../database/Products";
+
 function HeaderTools() {
   return (
     <>
@@ -21,7 +23,7 @@ function HeaderTools() {
             />
           </Link>
         </div>
-        <SearchBar />
+        <SearchBar suggestions={Products}/>
         <YourCart />
       </div>
     </>
