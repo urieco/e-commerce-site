@@ -61,7 +61,7 @@ function SearchBar({ suggestions }) {
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
         return (
-          <ul className="absolute w-full pr-14">
+          <ul className="absolute w-full sm:pr-14 mt-8">
             {filteredSuggestions.map((suggestion, index) => {
               let selected;
               if (index === activeSuggestion) {
@@ -90,18 +90,17 @@ function SearchBar({ suggestions }) {
 
   return (
     <>
-      <div className="justify-self-start flex gap-x-1 ml-5">
+      <div className="justify-self-start flex gap-x-1 sm:ml-5 mt-5 sm:mt-0">
         <form
-          action=""
           method="get"
-          className="relative"
+          className="relative flex"
           onSubmit={handleSubmit}
         >
           <input
             type="search"
             name="searchBar"
             id="searchBar"
-            className="w-[40vw] hover:bg-gray-200 py-1 pl-2 rounded-r-md focus:border-none focus:outline-none"
+            className="w-[65vw] sm:w-[40vw] hover:bg-gray-200 py-1 sm:pl-2 sm:rounded-r-md focus:border-none focus:outline-none"
             onKeyDown={handleKeyDown}
             onChange={handleChange}
             onFocus={() => setShowSuggestions(true)}
@@ -115,7 +114,7 @@ function SearchBar({ suggestions }) {
             name="searchBtn"
             id="searchBtn"
             value="Search"
-            className="text-gray-200 bg-primary_1 hover:bg-red-500 font-semibold absolute -right-2 px-2 py-[0.25rem] rounded-r-full cursor-pointer"
+            className="text-gray-200 bg-primary_1 hover:bg-red-500 font-semibold sm:absolute sm:-right-2 px-2 sm:py-[0.25rem] sm:rounded-r-full cursor-pointer"
           />
         </form>
       </div>

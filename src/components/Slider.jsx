@@ -78,15 +78,15 @@ function Slider() {
 
   return (
     <>
-      <div className="text-gray-700 text-2xl font-bold tracking-tighter pb-2 mx-[10vw]">
+      <div className="text-center sm:text-left text-gray-700 text-2xl font-bold tracking-tighter py-5  mx-[10vw]">
         NEW PRODUCTS
       </div>
-      <div className="bg-gray-100 w-[1vw] h-[42vh] absolute py-2 border-l rounded-lg mx-[10vw] shadow-lg z-20"></div>
-      <div className="bg-gray-100 w-[1vw] h-[42vh] absolute right-0 py-2 border-r rounded-lg mx-[10vw] shadow-lg z-20"></div>
-      <div className="border-x-transparent py-2 border-y rounded-lg mx-[10vw] mb-10 shadow-sm">
+      <div className="bg-gray-100 w-[1vw] h-[42vh] absolute py-2 border-l rounded-lg sm:mx-[10vw] shadow-lg z-20"></div>
+      <div className="bg-gray-100 w-[1vw] h-[42vh] absolute right-0 py-2 border-r rounded-lg sm:mx-[10vw] shadow-lg z-20"></div>
+      <div className="border-x-transparent py-2 border-y rounded-lg sm:mx-[10vw] mb-10 shadow-sm">
         <div className="w-[40vw] h-[40vh] relative my-0 mx-auto">
           <div
-            className="text-gray-300 hover:text-gray-600 text-7xl font-semibold w-[5vw] h-[5vh] absolute top-[35%] -left-20 scale-y-125 active:translate-x-[-0.25rem] cursor-pointer z-10 select-none"
+            className="text-gray-300 hover:text-gray-600 text-7xl font-semibold w-[5vw] h-[5vh] absolute top-[35%] -left-28 sm:-left-20 scale-y-125 active:translate-x-[-0.25rem] cursor-pointer z-10 select-none"
             onClick={goToLeft}
           >
             {"<"}

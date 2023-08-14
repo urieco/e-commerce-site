@@ -53,7 +53,7 @@ function ProductDisplay({ product }) {
     <>
       <div
         data-brand={product.brand}
-        className="product h-[26rem] w-48  border-2 rounded-md shadow-md mx-2 "
+        className="product h-[26rem] sm:w-48 border-2 rounded-md shadow-md mx-2"
       >
         <div className="text-right py-1 px-2">
           {monthSinceRelease - 1 < 1 ? (
@@ -71,11 +71,11 @@ function ProductDisplay({ product }) {
         </div>
 
         <Link to={`/${product.type}/${product.key}`}>
-          <div className="h-40 w-44 flex justify-center items-center  my-4">
+          <div className="h-40 w-full sm:w-44 flex justify-center items-center  my-4">
             <img
               src={product.imageURL}
               alt={product.title}
-              className="w-full h-full object-scale-down"
+              className="w-full h-full object-contain sm:object-scale-down"
             />
           </div>
           <div className="text-center font-semibold line-clamp-2 relative pt-1 mx-2 z-10">

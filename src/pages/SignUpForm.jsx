@@ -62,9 +62,9 @@ function SignUpForm() {
   };
 
   return (
-    <div className="min-w-screen min-h-screen bg-gradient-to-r from-red-100 to-blue-100 grid">
+    <div className="min-w-screen min-h-screen bg-gradient-to-r from-red-100 to-blue-100 grid overflow-hidden">
       <BackToHomeBtn/>
-      <div className="popUp text-secondary_1 w-max h-max items-center justify-self-center shadow-lg mt-36 mb-48">
+      <div className="popUp text-secondary_1 w-screen sm:w-max h-screen sm:h-auto items-center justify-self-center shadow-lg mt-20 sm:mt-36 mb-48">
         <div className="text-gray-200 bg-primary_1 text-center text-3xl font-bold px-16 py-4 ">
           REGISTRATION
         </div>
@@ -106,17 +106,17 @@ function SignUpForm() {
               name="registerBtn"
               id="registerBtn"
               value="REGISTER"
-              className="text-gray-200 bg-primary_1 group-hover:bg-red-500 text-2xl font-semibold w-[22.75rem] absolute top-3 -right-11 py-3 rounded-md mt-4 cursor-pointer z-10 select-none"
+              className="text-gray-200 bg-primary_1 group-hover:bg-red-500 text-2xl font-semibold w-[105vw] sm:w-[22.75rem] absolute top-3 -right-11 py-3 rounded-md mt-4 cursor-pointer z-10 select-none"
             />
             <div className="relative bottom-[-4.5rem] left-[-2.5rem] w-0 h-0 border-solid border-t-transparent border-b-transparent border-y-[10px] border-r-red-800 group-hover:border-r-red-600 border-r-[10px] z-0"></div>
 
-            <div className="relative bottom-[-3.3rem] right-[-19.3rem] w-0 h-0 border-solid border-t-transparent border-b-transparent border-y-[10px] border-r-red-800 group-hover:border-r-red-600 border-r-[10px] rotate-180 z-0"></div>
+            <div className="relative bottom-[-3.3rem] right-10 sm:right-[-19.3rem] w-0 h-0 border-solid border-t-transparent border-b-transparent border-y-[10px] border-r-red-800 group-hover:border-r-red-600 border-r-[10px] rotate-180 z-0"></div>
           </label>
         </form>
         <div className="text-primary_1 relative top-14 px-7">
           {errorMessage}
         </div>
-        <div className="flex flex-col px-7 pt-[4.5rem] pb-8 border-x-2">
+        <div className="text-center flex flex-col px-7 pt-[4.5rem] pb-8 border-x-2">
           Already Have An Account ?
           <Link to="/login" className="text-primary_1 underline">
             {" "}

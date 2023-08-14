@@ -12,7 +12,7 @@ function ProductList ({ category }) {
     <>
       <Header/>
       <div
-        className="grid mx-[10vw] my-[10vh]"
+        className="sm:grid sm:mx-[10vw] my-[10vh]"
         style={{ 
           gridTemplateColumns: "15rem 1fr",
           gridTemplateRows: "3rem 1fr" 

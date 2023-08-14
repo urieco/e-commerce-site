@@ -58,7 +58,7 @@ function ProductPage() {
   return (
     <>
       <Header />
-      <div className="grid grid-cols-2 py-20 border-primary_3 border-4 rounded-lg shadow-lg mx-[10vw] my-2">
+      <div className="grid sm:grid-cols-2 py-20 border-primary_3 border-4 rounded-lg shadow-lg sm:mx-[10vw] my-2">
         <div className="w-full h-full border-r">
           <img src={product.imageURL} alt={product.title} />
         </div>

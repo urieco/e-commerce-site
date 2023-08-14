@@ -22,7 +22,7 @@ function CountdownClock() {
 
   return (
     <>
-      <div className="flex gap-2 justify-center ml-6">
+      <div className="flex gap-2 justify-center sm:ml-6">
         <div className="text-gray-200 bg-primary_1 text-center text-sm w-20 h-20 font-light flex flex-col pt-3 rounded-full shadow-lg">
           <span className="text-xl font-semibold mb-1">{timeValues.day}</span>{" "}
           DAYS

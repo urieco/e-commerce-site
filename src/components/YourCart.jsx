@@ -20,13 +20,13 @@ function YourCart() {
   return (
     <>
       <div
-        className="flex mt-2"
+        className="flex justify-center sm:justify-normal mt-10 sm:mt-2"
         onClick={() => {
           if (!itemInCart.length) return;
           setOpenCartSidePanel(true);
         }}
       >
-        <BsFillCartFill className="text-gray-200 hover:text-primary_1 scale-150 cursor-pointer" />
+        <BsFillCartFill className="text-lg sm:text-md text-gray-200 hover:text-primary_1 scale-150 cursor-pointer" />
         <div
           className="text-gray-200 bg-primary_1 text-center align-top font-semibold w-6 h-6 relative -top-4 rounded-lg"
           style={itemStyle}

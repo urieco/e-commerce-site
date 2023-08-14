@@ -49,8 +49,8 @@ function Header() {
   return (
     <>
       <header className="sticky top-0 z-50">
-        <div className="bg-primary_2 text-gray-200 font-semibold flex place-content-between px-[10vw]">
-          <div className="flex gap-x-2">
+        <div className="bg-primary_2 text-gray-200 font-semibold sm:flex place-content-between px-2 sm:px-[10vw]">
+          <div className="sm:flex gap-x-2 hidden sm:visible">
             <div className="flex gap-x-1">
               <BsTelephone className="text-primary_1 mt-1" />
               123-456-7890
@@ -59,12 +59,12 @@ function Header() {
               <TfiEmail className="text-primary_1 mt-1.5" />
               microware@gmail.com
             </div>
-            <div className="flex gap-x-1">
+            <div className="text-center flex gap-x-1">
               <MdLocationOn className="text-primary_1 mt-1.5" />
               1234 Sunshine Road
             </div>
           </div>
-          <div className="flex gap-x-2">
+          <div className="text-center flex justify-around sm:justify-normal gap-x-2 px-2 pt-10 sm:pt-0">
             <div className="flex gap-x-1">
               <BsCurrencyDollar className="text-primary_1 mt-1.5" />
               <PickCurrency />
@@ -76,7 +76,7 @@ function Header() {
               </Link>
             </div>
             {isSignedIn ? null : (
-              <div className="text-white bg-primary_1 hover:bg-red-500 px-2 rounded-sm">
+              <div className="text-white bg-primary_1 h-fit hover:bg-red-500 px-2 rounded-sm">
                 <Link to="/registration">Sign Up</Link>
               </div>
             )}

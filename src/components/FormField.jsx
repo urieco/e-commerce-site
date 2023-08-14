@@ -9,7 +9,7 @@ function FormField({ title, type = "text", id, onChangeFunc }) {
           type={type}
           name={id}
           id={id}
-          className="appearance-none hover:bg-gray-200  w-full p-[0.2em] pl-1 rounded-lg border border-secondary_1 invalid:border-red-600 mt-2"
+          className="appearance-none hover:bg-gray-200  w-full p-[0.5em] sm:p-[0.2em] pl-1 rounded-lg border border-secondary_1 invalid:border-red-600 mt-2"
           onChange={onChangeFunc}
           minLength="5"
           required
