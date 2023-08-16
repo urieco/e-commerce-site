@@ -71,7 +71,7 @@ function ProductDisplay({ product }) {
         </div>
 
         <Link to={`/${product.type}/${product.key}`}>
-          <div className="h-40 w-full sm:w-44 flex justify-center items-center  my-4">
+          <div className="h-40 w-[11.5rem] sm:w-44 flex justify-center items-center my-4">
             <img
               src={product.imageURL}
               alt={product.title}

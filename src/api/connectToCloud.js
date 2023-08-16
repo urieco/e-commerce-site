@@ -12,7 +12,7 @@ const addUser = async (data, errorFunc) => {
       return errorFunc("Username already exists");
 
     setDoc(doc(collection(db, "users"), data.username), data, { merge: true });
-    setTimeout(() => window.history.back(), 500);
+    setTimeout(() => window.location.href = "/login", 500);
   } catch (e) {
     console.log("Unexpected Error while adding document: ", e);
   }

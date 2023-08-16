@@ -47,21 +47,22 @@ function SearchBar({ suggestions }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setFilteredSuggestions([]);
     const routingValue = document.querySelector(`.suggestionItem[data-index="${activeSuggestion}"]`).getAttribute("data-routing");
-    window.location.href = `${routingValue}`;
+    const route = `https://microware-site.web.app${routingValue}`
+    window.location.href = route;
   };
 
   const SuggestionList = () => {
     const onSuggestionClick = (e) => {
       const routingValue = e.currentTarget.getAttribute("data-routing");
-      window.location.href = `${routingValue}`;
+      const route = `https://microware-site.web.app${routingValue}`
+      window.location.href = route;
     };
 
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
         return (
-          <ul className="absolute w-full sm:pr-14 mt-8">
+          <ul className="absolute w-full sm:pr-14 mt-8 z-50">
             {filteredSuggestions.map((suggestion, index) => {
               let selected;
               if (index === activeSuggestion) {

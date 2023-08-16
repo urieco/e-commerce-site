@@ -48,7 +48,7 @@ function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50">
+      <header className="relative sm:sticky top-0 z-50">
         <div className="bg-primary_2 text-gray-200 font-semibold sm:flex place-content-between px-2 sm:px-[10vw]">
           <div className="sm:flex gap-x-2 hidden sm:visible">
             <div className="flex gap-x-1">
