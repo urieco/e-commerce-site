@@ -9,6 +9,11 @@
   --secondary_1: #676F54;
 }
 
+html {
+  height: 101vh;
+  min-height: -webkit-fill-available;
+}
+
 body {
   overflow-x: hidden;
   scrollbar-width: thin;

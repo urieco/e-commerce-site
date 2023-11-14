@@ -12,9 +12,9 @@
 - Sign In/ Sign Up Authentication
 - Firebase deployment
 - Storing users' accounts on Firestore
+- Searchbar
 
 # Planned Features:
-- Searchbar
 - Rating
 - Upload your own products
 - Leaving comments
