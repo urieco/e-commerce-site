@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Homepage } from "./pages/Homepage";
-import { LoginForm } from "./pages/LoginForm";
-import { SignUpForm } from "./pages/SignUpForm";
-import { ProductList } from "./pages/ProductList";
-import { Error404 } from "./pages/Error404";
-import { ProductPage } from "./pages/ProductPage";
+import { Homepage } from "./components/Homepage";
+import { LoginForm } from "./containers/login&Registration/LoginForm";
+import { SignUpForm } from "./containers/login&Registration/SignUpForm";
+import { ProductList } from "./components/productList/ProductList";
+import { Error404 } from "./components/Error404";
+import { ProductPage } from "./containers/ProductPage";
 
 const RouteSwitch = () => {
 

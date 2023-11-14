@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import { RouteSwitch } from "./RouteSwitch";
-import { getExchangeRate } from "./components/getExchangeRate";
+import { getExchangeRate } from "./utils/getExchangeRate";
 
 const CartContext = createContext();
 const CurrencyContext = createContext();
