@@ -1,4 +1,4 @@
-import { CountdownClock } from "../../containers/promotion/CountdownClock";
+import { CountdownClock } from "../../containers/promotion/subcomponents/CountdownClock";
 
 import PromotionalAd from "/images/promotionalAd.png";
 import PromotionPieceLaptop from "/images/promotionalPiece.png";

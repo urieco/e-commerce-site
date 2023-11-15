@@ -1,4 +1,4 @@
-import { Slider } from "../../containers/promotion/Slider";
+import { Slider } from "../../containers/promotion/subcomponents/Slider";
 import { Promotion } from "../promotion/Promotion";
 import { Recommendation } from "../promotion/Recommendation";
 

@@ -20,6 +20,10 @@
 - Leaving comments
 - Admin / User Account Separation (New products needed to be verified by the Admin. Comments can also be filtered)
 
+# Known bugs
+- Brand selection does not disappear
+- NavBar over search result
+
 # Built with: 
 - Vite
 - TailwindCSS
