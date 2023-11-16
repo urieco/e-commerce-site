@@ -45,7 +45,7 @@ function FilteringSideBar() {
 
   return (
     <>
-      <div>
+      <aside>
         <div className="h-fit flex flex-col p-2 border-2 mt-2 mx-2">
           <span className="text-primary_1 font-bold">Filter List</span>
           <div>
@@ -89,7 +89,7 @@ function FilteringSideBar() {
             );
           })}
         </div>
-      </div>
+      </aside>
     </>
   );
 }

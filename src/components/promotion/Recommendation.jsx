@@ -14,8 +14,8 @@ function Recommendation() {
 
   return (
     <>
-      <div className="py-10 mx-[10vw]">
-        <div className="text-gray-700 text-2xl font-bold tracking-tighter pb-2">
+      <div className="py-10 mx-2 sm:mx-[10vw]">
+        <div className="text-center sm:text-justify text-gray-700 text-2xl font-bold tracking-tighter pb-2">
           RECOMMENDED FOR
           <span className="text-primary_1"> YOU</span>
         </div>

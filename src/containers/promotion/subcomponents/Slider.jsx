@@ -78,7 +78,7 @@ function Slider() {
 
   return (
     <>
-      <div className="text-center sm:text-left text-gray-700 text-2xl font-bold tracking-tighter py-5  mx-[10vw]">
+      <div className="text-center sm:text-left text-gray-700 text-2xl font-bold tracking-tighter py-5 mx-[10vw]">
         NEW PRODUCTS
       </div>
       <div className="bg-gray-100 w-[1vw] h-[42vh] absolute py-2 border-l rounded-lg sm:mx-[10vw] shadow-lg z-20"></div>

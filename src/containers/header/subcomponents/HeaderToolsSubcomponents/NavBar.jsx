@@ -2,10 +2,18 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 function NavBar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(window.innerWidth > 640);
 
   useEffect(() => {
-    if (window.innerWidth >= 640) setIsOpen(true);
+    const handleResize = () => {
+      setIsOpen(window.innerWidth > 640);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [])
 
 
@@ -23,7 +31,10 @@ function NavBar() {
           =
         </button>
         {!isOpen ? null : (
-          <div className="h-[27.5rem] sm:h-auto grid sm:flex gap-y-6 sm:gap-0 py-5 sm:py-0 " style={collapseStyle}>
+          <div
+            className="h-max sm:h-auto grid sm:flex gap-y-6 sm:gap-0 py-5 sm:py-0"
+            style={collapseStyle}
+          >
             <NavLink
               to="/"
               className="px-3 py-1 pr-5 border border-transparent hover:border-gray-200"
